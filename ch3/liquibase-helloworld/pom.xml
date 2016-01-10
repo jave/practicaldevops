@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>se.verona.liquibasehello</groupId>
+  <artifactId>liquibasehello</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>3.0.0-rc1</version>
+        <configuration>
+          <changeLogFile>src/main/resources/db-changelog.xml</changeLogFile>
+          <driver>org.h2.Driver</driver>
+          <url>jdbc:h2:liquidhello</url>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.171</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>

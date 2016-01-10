@@ -1,0 +1,87 @@
+* Liquibase hello-world
+
+This is a simple hello-world style example for the Liquibase
+relational database changeset handler.
+
+** Trying it out
+To try it out:
+
+#+BEGIN_SRC sh
+git clone git://github.com/jave/liquibase-helloworld.git
+cd liquibase-helloworld
+mvn liquibase:update
+#+END_SRC
+
+** The changelog file
+A H2 database file /tmp/liquidhello.h2.db will be created.
+
+Below is an example of what Liquibase changelog file can look like.
+
+It defines two changesets, with ids 1 and 2.
+
+Changeset 1 creates a table called test, with a column called name.
+
+Changeset 2 adds a column to the table called test, called address.
+
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+  <changeSet id="1" author="jave">
+
+    <createTable tableName="test">
+      <column name="id" type="int"/>
+      <column name="name" type="varchar(50)"/>
+    </createTable>
+  </changeSet>
+  
+  <changeSet id="2" author="jave">
+    <addColumn  tableName="test">
+        <column name="address" type="varchar(255)"/>
+    </addColumn>
+  </changeSet>
+  
+</databaseChangeLog>
+
+#+END_SRC
+
+** The pom.xml file
+The pom.xml file defines things like the jdbc url we need, and also
+the version of the liquibase plugin.
+
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>se.verona.liquibasehello</groupId>
+  <artifactId>liquibasehello</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>3.0.0-rc1</version>
+        <configuration>
+          <changeLogFile>src/main/resources/db-changelog.xml</changeLogFile>
+          <driver>org.h2.Driver</driver>
+          <url>jdbc:h2:liquidhello</url>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.171</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+#+END_SRC

@@ -1,0 +1,130 @@
+* Code samples for the Practical Devops book
+** ch4 code
+*** setting up a basic git server
+bare repo:
+cd /opt/git 
+mkdir project.git
+cd project.git
+git init --bare
+
+- Now try cloning, making changes, and pushing to the server
+*** Shared authentication( with ldap)
+*** large binary files
+*** Gerrit 
+    docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
+sudo dnf install git-review
+git pull --rebase origin master
+git rebase -i origin/master
+*** The Pull Request model
+*** Gitlab
+mkdir gitlab 
+cd gitlab 
+wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+docker-compose up
+** ch5 Build the code
+dnf install jenkins
+freestyle/fortune
+
+*** Cheating with FPM
+yum install rubygems
+yum install ruby
+yum install ruby-devel
+gem install fpm
+
+#!/bin/sh
+echo 'Hello World!'
+
+chmod a+x usr/local/bin/hello.sh
+fpm -s dir -t rpm -n hello-world -v 1 -C installdir usr
+
+rpm -qivp hello-world.rpm
+rpm -ivh hello-world.rpm
+*** Build slaves
+*** A note on cross-compiling
+*** Chaining jobs, build pipelines
+*** Build in dependency order
+** ch6 Test the code
+*** A Junit example
+?? seems kind of emoty.
+*** Mocking
+*** Test Coverage
+*** Docker in automated testing
+*** Arquilian
+hello world
+*** Performance testing
+*** Automated acceptance testing
+cucumber hello worldd
+*** A complete test automation scenario
+**** Running the automated test
+autotest_v1/bin/autotest.sh
+**** Handling the tricky dependencies with Docker
+docker run -d -p 4444:4444 --name selenium-hub selenium/hub
+docker run -d --link selenium-hub:hub selenium/node-firefox
+** ch7 Deploying the code
+*** Virtualization stacks
+script to install vbox
+*** Executing code on the client
+salt -E '.*' cmd.run 'ls -l'
+*** Puppet master, Puppet agent
+# TODO https://hub.docker.com/r/rfkrocktk/puppet/ this is the agent
+
+# https://hub.docker.com/r/rfkrocktk/puppetmaster/ this is the master
+
+rfkrocktk/puppet is a convenient docker image for exploring puppet. 
+
+docker --name dockerduck --hostname dockerduck -e PUPPETMASTER_TCP_HOST=ultramaster.example.com \
+    -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
+
+ssh ultramaster
+ultramaster:~ $ puppet cert list
+dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
+
+*** Ansible
+FROM williamyeh/ansible:centos7
+docker run -v `pwd`/ansible:/ansible  -it <hash> bash
+cd /ansible
+ansible-playbook -i inventory playbook.yml    --connection=local --sudo
+... etc
+*** Palletops
+cd pallet
+docker-compose up
+
+docker exec -it pallet  bash 
+lein repl
+*** Deploying with Chef
+docker run -it ubuntu
+curl -L https://www.opscode.com/chef/install.sh | bash
+... etc
+*** Deploying with Saltstack
+docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 \
+   -p 8080 -p 8081 -e SALT_NAME=master -e SALT_USE=master \
+   -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
+... etc
+*** Vagrant
+yum install 'vagrant*'
+... etc
+*** Deploying with Docker
+??? unfinished?
+*** AWS
+*** Azure
+** ch8 Monitoring the code
+*** Nagios 
+docker run -e     NAGIOSADMIN_USER=nagiosadmin -e NAGIOSAMDIN_PASS=nagios  -p 80:30000 cpuguy83/nagios 
+... etc
+*** Munin
+docker run -p 30005:80 lrivallain/munin:latest
+... etc
+*** Ganglia
+docker run wookietreiber/ganglia --help
+... etc
+the docker compose example is broken!
+*** Graphite
+ docker run -it \
+  -p 30020:80 \
+  -p 2003:2003 \
+  sitespeedio/graphite
+...etc
+*** Log handling
+** ch9 Issue Tracking
+** ch10 The Internet of Things and DevOps
+...  Nodemcu Amica
