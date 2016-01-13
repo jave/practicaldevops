@@ -1,0 +1,1 @@
+web: java $JVM_OPTS -cp target/usermanager.jar clojure.main -m usermanager.core

@@ -2,6 +2,7 @@
 https://www.packtpub.com/networking-and-servers/practical-devops
 ** ch3 How Architecture affects DevOps
 *** Liquibase hello-world
+
 *** Manual installation
 dnf install postgresql
 dnf install nginx
