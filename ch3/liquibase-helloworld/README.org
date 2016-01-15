@@ -32,14 +32,14 @@ Changeset 2 adds a column to the table called test, called address.
 
   <changeSet id="1" author="jave">
 
-    <createTable tableName="test">
+    <createTable tableName="customer">
       <column name="id" type="int"/>
       <column name="name" type="varchar(50)"/>
     </createTable>
   </changeSet>
   
   <changeSet id="2" author="jave">
-    <addColumn  tableName="test">
+    <addColumn  tableName="customer">
         <column name="address" type="varchar(255)"/>
     </addColumn>
   </changeSet>

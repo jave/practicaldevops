@@ -1,5 +1,8 @@
 * Code samples for the Practical Devops book
-** ch4 code
+** ch4 Everything is code
+- docker-io was renamed to docker, so use "docker-io" on older red hat
+  derivates, "docker" on newer
+- you might need "setenforce 0" to start docker, but it has security implications.
 *** setting up a basic git server
 bare repo:
 cd /opt/git 
