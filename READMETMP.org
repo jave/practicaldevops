@@ -1,29 +1,8 @@
 * Code samples for the Practical Devops book
 ** ch4 Everything is code
-- docker-io was renamed to docker, so use "docker-io" on older red hat
-  derivates, "docker" on newer
-- you might need "setenforce 0" to start docker, but it has security implications.
-*** setting up a basic git server
-bare repo:
-cd /opt/git 
-mkdir project.git
-cd project.git
-git init --bare
-
-- Now try cloning, making changes, and pushing to the server
 *** Shared authentication( with ldap)
 *** large binary files
-*** Gerrit 
-    docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
-sudo dnf install git-review
-git pull --rebase origin master
-git rebase -i origin/master
 *** The Pull Request model
-*** Gitlab
-mkdir gitlab 
-cd gitlab 
-wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
-docker-compose up
 ** ch5 Build the code
 dnf install jenkins
 freestyle/fortune

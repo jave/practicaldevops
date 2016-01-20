@@ -9,3 +9,47 @@ dnf install nginx
 cd ch3/crm1
 lein build
 lein run
+** ch4 Everything is code
+See the following documentation for Fedora. 
+https://docs.docker.com/v1.5/installation/fedora/
+
+- docker-io was renamed to docker from Fedora 21, so use "docker-io" on older red hat
+  derivates, "docker" on newer
+
+- Use a sudo capable user to run docker commands, or the root user
+
+- You can also add a docker group with rights to use the docker socket
+  needed to communicate with the docker daemon.
+
+This approach is described here
+https://docs.docker.com/v1.5/installation/fedora/
+
+In summary:
+$ sudo groupadd docker
+$ sudo chown root:docker /var/run/docker.sock
+$ sudo usermod -a -G docker $USERNAME
+
+- You might need "setenforce 0" to start docker.  The comand will
+  disable selinux, which has security implications. Use it only on a
+  test machine.
+
+
+*** setting up a basic git server
+bare repo:
+cd /opt/git 
+mkdir project.git
+cd project.git
+git init --bare
+
+- Now try cloning, making changes, and pushing to the server
+*** Gerrit 
+docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
+sudo dnf install git-review
+git pull --rebase origin master
+git rebase -i origin/master
+*** The Pull Request model
+*** Gitlab
+mkdir gitlab 
+cd gitlab 
+wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+docker-compose up
