@@ -23,7 +23,9 @@ lein build
 lein run
 #+END_SRC
 ** ch4 Everything is code
-See the following documentation for Fedora. 
+To make sure Docker is working properly,
+see the following documentation for Fedora. 
+
 https://docs.docker.com/v1.5/installation/fedora/
 
 - docker-io was renamed to docker from Fedora 21, so use "docker-io" on older red hat
@@ -126,7 +128,10 @@ docker run -d --link selenium-hub:hub selenium/node-firefox
 *** Virtualization stacks
 script to install vbox
 *** Executing code on the client
+#+BEGIN_SRC sh
 salt -E '.*' cmd.run 'ls -l'
+#+END_SRC
+
 *** Puppet master, Puppet agent
 # TODO https://hub.docker.com/r/rfkrocktk/puppet/ this is the agent
 
@@ -134,18 +139,21 @@ salt -E '.*' cmd.run 'ls -l'
 
 rfkrocktk/puppet is a convenient docker image for exploring puppet. 
 
+#+BEGIN_SRC sh
 docker --name dockerduck --hostname dockerduck -e PUPPETMASTER_TCP_HOST=ultramaster.example.com \
     -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
-
+#+END_SRC
 ssh ultramaster
 ultramaster:~ $ puppet cert list
 dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
 
 *** Ansible
+#+BEGIN_SRC Dockerfile
 FROM williamyeh/ansible:centos7
 docker run -v `pwd`/ansible:/ansible  -it <hash> bash
 cd /ansible
 ansible-playbook -i inventory playbook.yml    --connection=local --sudo
+#+END_SRC
 ... etc
 *** Palletops
 cd pallet
@@ -158,12 +166,17 @@ docker run -it ubuntu
 curl -L https://www.opscode.com/chef/install.sh | bash
 ... etc
 *** Deploying with Saltstack
+#+BEGIN_SRC sh
 docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 \
    -p 8080 -p 8081 -e SALT_NAME=master -e SALT_USE=master \
    -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
+#+END_SRC
 ... etc
 *** Vagrant
+#+BEGIN_SRC sh
 yum install 'vagrant*'
+#+END_SRC
+
 ... etc
 *** Deploying with Docker
 # TODO ??? unfinished?
@@ -171,22 +184,33 @@ yum install 'vagrant*'
 *** Azure
 ** ch8 Monitoring the code
 *** Nagios 
+#+BEGIN_SRC sh
 docker run -e     NAGIOSADMIN_USER=nagiosadmin -e NAGIOSAMDIN_PASS=nagios  -p 80:30000 cpuguy83/nagios 
+#+END_SRC
+
 ... etc
 *** Munin
+#+BEGIN_SRC sh
 docker run -p 30005:80 lrivallain/munin:latest
+#+END_SRC
+
 ... etc
 *** Ganglia
+#+BEGIN_SRC sh
 docker run wookietreiber/ganglia --help
+#+END_SRC
+
 ... etc
-the docker compose example is broken!
+# TODO the docker compose example is broken!
 *** Graphite
+#+BEGIN_SRC sh
  docker run -it \
   -p 30020:80 \
   -p 2003:2003 \
   sitespeedio/graphite
+#+END_SRC
 ...etc
 *** Log handling
 ** ch9 Issue Tracking
-** COMMENT ch10 The Internet of Things and DevOps
+** ch10 The Internet of Things and DevOps
 ...  Nodemcu Amica

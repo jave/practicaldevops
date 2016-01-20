@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-01-20 Wed 22:01 -->
+<!-- 2016-01-20 Wed 22:45 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -147,7 +147,7 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline40">1. Code samples for the Practical Devops book</a>
+<li><a href="#orgheadline41">1. Code samples for the Practical Devops book</a>
 <ul>
 <li><a href="#orgheadline3">1.1. ch3 How Architecture affects DevOps</a>
 <ul>
@@ -204,13 +204,14 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#orgheadline39">1.7. ch9 Issue Tracking</a></li>
+<li><a href="#orgheadline40">1.8. ch10 The Internet of Things and DevOps</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline40" class="outline-2">
-<h2 id="orgheadline40"><span class="section-number-2">1</span> Code samples for the Practical Devops book</h2>
+<div id="outline-container-orgheadline41" class="outline-2">
+<h2 id="orgheadline41"><span class="section-number-2">1</span> Code samples for the Practical Devops book</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 These are the code samples for the book "Practical Devops" by Joakim
@@ -253,7 +254,11 @@ lein run
 <h3 id="orgheadline7"><span class="section-number-3">1.2</span> ch4 Everything is code</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-See the following documentation for Fedora. 
+To make sure Docker is working properly,
+see the following documentation for Fedora. 
+</p>
+
+<p>
 <a href="https://docs.docker.com/v1.5/installation/fedora/">https://docs.docker.com/v1.5/installation/fedora/</a>
 </p>
 
@@ -448,11 +453,14 @@ script to install vbox
 <div id="outline-container-orgheadline22" class="outline-4">
 <h4 id="orgheadline22"><span class="section-number-4">1.5.2</span> Executing code on the client</h4>
 <div class="outline-text-4" id="text-1-5-2">
-<p>
-salt -E '.*' cmd.run 'ls -l'
-</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">salt -E <span style="color: #68f6cb;">'.*'</span> cmd.run <span style="color: #68f6cb;">'ls -l'</span>
+</pre>
 </div>
 </div>
+</div>
+
 <div id="outline-container-orgheadline23" class="outline-4">
 <h4 id="orgheadline23"><span class="section-number-4">1.5.3</span> Puppet master, Puppet agent</h4>
 <div class="outline-text-4" id="text-1-5-3">
@@ -460,11 +468,12 @@ salt -E '.*' cmd.run 'ls -l'
 rfkrocktk/puppet is a convenient docker image for exploring puppet. 
 </p>
 
-<p>
-docker &#x2013;name dockerduck &#x2013;hostname dockerduck -e PUPPETMASTER<sub>TCP</sub><sub>HOST</sub>=ultramaster.example.com \
-    -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
-</p>
+<div class="org-src-container">
 
+<pre class="src src-sh">docker --name dockerduck --hostname dockerduck -e <span style="color: #ff694d;">PUPPETMASTER_TCP_HOST</span>=ultramaster.example.com <span style="color: #68f6cb;">\</span>
+    -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
+</pre>
+</div>
 <p>
 ssh ultramaster
 ultramaster:~ $ puppet cert list
@@ -476,11 +485,15 @@ dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
 <div id="outline-container-orgheadline24" class="outline-4">
 <h4 id="orgheadline24"><span class="section-number-4">1.5.4</span> Ansible</h4>
 <div class="outline-text-4" id="text-1-5-4">
-<p>
-FROM williamyeh/ansible:centos7
+<div class="org-src-container">
+
+<pre class="src src-Dockerfile">FROM williamyeh/ansible:centos7
 docker run -v `pwd`/ansible:/ansible  -it &lt;hash&gt; bash
 cd /ansible
-ansible-playbook -i inventory playbook.yml    &#x2013;connection=local &#x2013;sudo
+ansible-playbook -i inventory playbook.yml    --connection=local --sudo
+</pre>
+</div>
+<p>
 &#x2026; etc
 </p>
 </div>
@@ -512,10 +525,14 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
 <div id="outline-container-orgheadline27" class="outline-4">
 <h4 id="orgheadline27"><span class="section-number-4">1.5.7</span> Deploying with Saltstack</h4>
 <div class="outline-text-4" id="text-1-5-7">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 <span style="color: #68f6cb;">\</span>
+   -p 8080 -p 8081 -e <span style="color: #ff694d;">SALT_NAME</span>=master -e <span style="color: #ff694d;">SALT_USE</span>=master <span style="color: #68f6cb;">\</span>
+   -v <span style="color: #fa8072;">`pwd`</span>/srv/salt:/srv/salt:rw jacksoncage/salt
+</pre>
+</div>
 <p>
-docker run -i -t &#x2013;name=saltdocker<sub>master</sub><sub>1</sub> -h master -p 4505 -p 4506 \
-   -p 8080 -p 8081 -e SALT<sub>NAME</sub>=master -e SALT<sub>USE</sub>=master \
-   -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
 &#x2026; etc
 </p>
 </div>
@@ -523,8 +540,13 @@ docker run -i -t &#x2013;name=saltdocker<sub>master</sub><sub>1</sub> -h master 
 <div id="outline-container-orgheadline28" class="outline-4">
 <h4 id="orgheadline28"><span class="section-number-4">1.5.8</span> Vagrant</h4>
 <div class="outline-text-4" id="text-1-5-8">
+<div class="org-src-container">
+
+<pre class="src src-sh">yum install <span style="color: #68f6cb;">'vagrant*'</span>
+</pre>
+</div>
+
 <p>
-yum install 'vagrant*'
 &#x2026; etc
 </p>
 </div>
@@ -545,8 +567,13 @@ yum install 'vagrant*'
 </div><div id="outline-container-orgheadline33" class="outline-4">
 <h4 id="orgheadline33"><span class="section-number-4">1.6.1</span> Nagios</h4>
 <div class="outline-text-4" id="text-1-6-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -e     <span style="color: #ff694d;">NAGIOSADMIN_USER</span>=nagiosadmin -e <span style="color: #ff694d;">NAGIOSAMDIN_PASS</span>=nagios  -p 80:30000 cpuguy83/nagios
+</pre>
+</div>
+
 <p>
-docker run -e     NAGIOSADMIN<sub>USER</sub>=nagiosadmin -e NAGIOSAMDIN<sub>PASS</sub>=nagios  -p 80:30000 cpuguy83/nagios 
 &#x2026; etc
 </p>
 </div>
@@ -554,8 +581,13 @@ docker run -e     NAGIOSADMIN<sub>USER</sub>=nagiosadmin -e NAGIOSAMDIN<sub>PASS
 <div id="outline-container-orgheadline34" class="outline-4">
 <h4 id="orgheadline34"><span class="section-number-4">1.6.2</span> Munin</h4>
 <div class="outline-text-4" id="text-1-6-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -p 30005:80 lrivallain/munin:latest
+</pre>
+</div>
+
 <p>
-docker run -p 30005:80 lrivallain/munin:latest
 &#x2026; etc
 </p>
 </div>
@@ -563,21 +595,30 @@ docker run -p 30005:80 lrivallain/munin:latest
 <div id="outline-container-orgheadline35" class="outline-4">
 <h4 id="orgheadline35"><span class="section-number-4">1.6.3</span> Ganglia</h4>
 <div class="outline-text-4" id="text-1-6-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run wookietreiber/ganglia --help
+</pre>
+</div>
+
 <p>
-docker run wookietreiber/ganglia &#x2013;help
 &#x2026; etc
-the docker compose example is broken!
 </p>
 </div>
 </div>
+
 <div id="outline-container-orgheadline36" class="outline-4">
 <h4 id="orgheadline36"><span class="section-number-4">1.6.4</span> Graphite</h4>
 <div class="outline-text-4" id="text-1-6-4">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -it <span style="color: #68f6cb;">\</span>
+ -p 30020:80 <span style="color: #68f6cb;">\</span>
+ -p 2003:2003 <span style="color: #68f6cb;">\</span>
+ sitespeedio/graphite
+</pre>
+</div>
 <p>
- docker run -it \
-  -p 30020:80 \
-  -p 2003:2003 \
-  sitespeedio/graphite
 &#x2026;etc
 </p>
 </div>
@@ -589,11 +630,19 @@ the docker compose example is broken!
 <div id="outline-container-orgheadline39" class="outline-3">
 <h3 id="orgheadline39"><span class="section-number-3">1.7</span> ch9 Issue Tracking</h3>
 </div>
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">1.8</span> ch10 The Internet of Things and DevOps</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+&#x2026;  Nodemcu Amica
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Joakim Verona</p>
-<p class="date">Created: 2016-01-20 Wed 22:01</p>
+<p class="date">Created: 2016-01-20 Wed 22:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
