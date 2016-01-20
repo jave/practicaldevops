@@ -1,14 +1,27 @@
 * Code samples for the Practical Devops book
+These are the code samples for the book "Practical Devops" by Joakim
+Verona at Packt Publishing.
+
+The books home page:
 https://www.packtpub.com/networking-and-servers/practical-devops
+
+The code repository at github:
+https://github.com/jave/practicaldevops.git
 ** ch3 How Architecture affects DevOps
+*** COMMENT Shared authentication( with ldap)
+*** COMMENT large binary files
+*** COMMENT The Pull Request model
+
 *** Liquibase hello-world
 
 *** Manual installation
+#+BEGIN_SRC sh
 dnf install postgresql
 dnf install nginx
 cd ch3/crm1
 lein build
 lein run
+#+END_SRC
 ** ch4 Everything is code
 See the following documentation for Fedora. 
 https://docs.docker.com/v1.5/installation/fedora/
@@ -25,31 +38,155 @@ This approach is described here
 https://docs.docker.com/v1.5/installation/fedora/
 
 In summary:
+#+BEGIN_SRC sh
 $ sudo groupadd docker
 $ sudo chown root:docker /var/run/docker.sock
 $ sudo usermod -a -G docker $USERNAME
+#+END_SRC
 
 - You might need "setenforce 0" to start docker.  The comand will
-  disable selinux, which has security implications. Use it only on a
+  disable selinux, which has security implications. Use this only on a
   test machine.
-
 
 *** setting up a basic git server
 bare repo:
+#+BEGIN_SRC sh
 cd /opt/git 
 mkdir project.git
 cd project.git
 git init --bare
+#+END_SRC
 
 - Now try cloning, making changes, and pushing to the server
 *** Gerrit 
+#+BEGIN_SRC sh
 docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
 sudo dnf install git-review
 git pull --rebase origin master
 git rebase -i origin/master
-*** The Pull Request model
+#+END_SRC
+*** COMMENT The Pull Request model
 *** Gitlab
 mkdir gitlab 
 cd gitlab 
 wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
 docker-compose up
+
+** ch5 Build the code
+Create a "freestyle" class job that runs the "fortune" command.
+#+BEGIN_SRC sh
+dnf install jenkins
+#+END_SRC
+
+*** Cheating with FPM
+To install fpm:
+#+BEGIN_SRC sh
+yum install rubygems
+yum install ruby
+yum install ruby-devel
+gem install fpm
+#+END_SRC
+
+Package this shell script:
+#+BEGIN_SRC sh
+#!/bin/sh
+echo 'Hello World!'
+
+chmod a+x usr/local/bin/hello.sh
+fpm -s dir -t rpm -n hello-world -v 1 -C installdir usr
+
+rpm -qivp hello-world.rpm
+rpm -ivh hello-world.rpm
+#+END_SRC
+*** COMMENT Build slaves
+*** COMMENT A note on cross-compiling
+*** COMMENT Chaining jobs, build pipelines
+*** COMMENT Build in dependency order
+
+** ch6 Test the code
+*** A Junit example
+# TODO ?? seems kind of emoty.
+*** Mocking
+*** Test Coverage
+*** Docker in automated testing
+*** Arquilian
+hello world
+*** Performance testing
+*** Automated acceptance testing
+cucumber hello worldd
+*** A complete test automation scenario
+**** Running the automated test
+autotest_v1/bin/autotest.sh
+**** Handling the tricky dependencies with Docker
+#+BEGIN_SRC sh
+docker run -d -p 4444:4444 --name selenium-hub selenium/hub
+docker run -d --link selenium-hub:hub selenium/node-firefox
+#+END_SRC
+** ch7 Deploying the code
+*** Virtualization stacks
+script to install vbox
+*** Executing code on the client
+salt -E '.*' cmd.run 'ls -l'
+*** Puppet master, Puppet agent
+# TODO https://hub.docker.com/r/rfkrocktk/puppet/ this is the agent
+
+# https://hub.docker.com/r/rfkrocktk/puppetmaster/ this is the master
+
+rfkrocktk/puppet is a convenient docker image for exploring puppet. 
+
+docker --name dockerduck --hostname dockerduck -e PUPPETMASTER_TCP_HOST=ultramaster.example.com \
+    -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
+
+ssh ultramaster
+ultramaster:~ $ puppet cert list
+dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
+
+*** Ansible
+FROM williamyeh/ansible:centos7
+docker run -v `pwd`/ansible:/ansible  -it <hash> bash
+cd /ansible
+ansible-playbook -i inventory playbook.yml    --connection=local --sudo
+... etc
+*** Palletops
+cd pallet
+docker-compose up
+
+docker exec -it pallet  bash 
+lein repl
+*** Deploying with Chef
+docker run -it ubuntu
+curl -L https://www.opscode.com/chef/install.sh | bash
+... etc
+*** Deploying with Saltstack
+docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 \
+   -p 8080 -p 8081 -e SALT_NAME=master -e SALT_USE=master \
+   -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
+... etc
+*** Vagrant
+yum install 'vagrant*'
+... etc
+*** Deploying with Docker
+# TODO ??? unfinished?
+*** AWS
+*** Azure
+** ch8 Monitoring the code
+*** Nagios 
+docker run -e     NAGIOSADMIN_USER=nagiosadmin -e NAGIOSAMDIN_PASS=nagios  -p 80:30000 cpuguy83/nagios 
+... etc
+*** Munin
+docker run -p 30005:80 lrivallain/munin:latest
+... etc
+*** Ganglia
+docker run wookietreiber/ganglia --help
+... etc
+the docker compose example is broken!
+*** Graphite
+ docker run -it \
+  -p 30020:80 \
+  -p 2003:2003 \
+  sitespeedio/graphite
+...etc
+*** Log handling
+** ch9 Issue Tracking
+** COMMENT ch10 The Internet of Things and DevOps
+...  Nodemcu Amica

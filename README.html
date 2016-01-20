@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-01-20 Wed 22:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Joakim Verona" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline40">1. Code samples for the Practical Devops book</a>
+<ul>
+<li><a href="#orgheadline3">1.1. ch3 How Architecture affects DevOps</a>
+<ul>
+<li><a href="#orgheadline1">1.1.1. Liquibase hello-world</a></li>
+<li><a href="#orgheadline2">1.1.2. Manual installation</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline7">1.2. ch4 Everything is code</a>
+<ul>
+<li><a href="#orgheadline4">1.2.1. setting up a basic git server</a></li>
+<li><a href="#orgheadline5">1.2.2. Gerrit</a></li>
+<li><a href="#orgheadline6">1.2.3. Gitlab</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline9">1.3. ch5 Build the code</a>
+<ul>
+<li><a href="#orgheadline8">1.3.1. Cheating with FPM</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline20">1.4. ch6 Test the code</a>
+<ul>
+<li><a href="#orgheadline10">1.4.1. A Junit example</a></li>
+<li><a href="#orgheadline11">1.4.2. Mocking</a></li>
+<li><a href="#orgheadline12">1.4.3. Test Coverage</a></li>
+<li><a href="#orgheadline13">1.4.4. Docker in automated testing</a></li>
+<li><a href="#orgheadline14">1.4.5. Arquilian</a></li>
+<li><a href="#orgheadline15">1.4.6. Performance testing</a></li>
+<li><a href="#orgheadline16">1.4.7. Automated acceptance testing</a></li>
+<li><a href="#orgheadline19">1.4.8. A complete test automation scenario</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline32">1.5. ch7 Deploying the code</a>
+<ul>
+<li><a href="#orgheadline21">1.5.1. Virtualization stacks</a></li>
+<li><a href="#orgheadline22">1.5.2. Executing code on the client</a></li>
+<li><a href="#orgheadline23">1.5.3. Puppet master, Puppet agent</a></li>
+<li><a href="#orgheadline24">1.5.4. Ansible</a></li>
+<li><a href="#orgheadline25">1.5.5. Palletops</a></li>
+<li><a href="#orgheadline26">1.5.6. Deploying with Chef</a></li>
+<li><a href="#orgheadline27">1.5.7. Deploying with Saltstack</a></li>
+<li><a href="#orgheadline28">1.5.8. Vagrant</a></li>
+<li><a href="#orgheadline29">1.5.9. Deploying with Docker</a></li>
+<li><a href="#orgheadline30">1.5.10. AWS</a></li>
+<li><a href="#orgheadline31">1.5.11. Azure</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline38">1.6. ch8 Monitoring the code</a>
+<ul>
+<li><a href="#orgheadline33">1.6.1. Nagios</a></li>
+<li><a href="#orgheadline34">1.6.2. Munin</a></li>
+<li><a href="#orgheadline35">1.6.3. Ganglia</a></li>
+<li><a href="#orgheadline36">1.6.4. Graphite</a></li>
+<li><a href="#orgheadline37">1.6.5. Log handling</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline39">1.7. ch9 Issue Tracking</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">1</span> Code samples for the Practical Devops book</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+These are the code samples for the book "Practical Devops" by Joakim
+Verona at Packt Publishing.
+</p>
+
+<p>
+The books home page:
+<a href="https://www.packtpub.com/networking-and-servers/practical-devops">https://www.packtpub.com/networking-and-servers/practical-devops</a>
+</p>
+
+<p>
+The code repository at github:
+<a href="https://github.com/jave/practicaldevops.git">https://github.com/jave/practicaldevops.git</a>
+</p>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.1</span> ch3 How Architecture affects DevOps</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Liquibase hello-world</h4>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2"><span class="section-number-4">1.1.2</span> Manual installation</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">dnf install postgresql
+dnf install nginx
+<span style="color: #96a5d9; font-style: italic;">cd</span> ch3/crm1
+lein build
+lein run
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.2</span> ch4 Everything is code</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+See the following documentation for Fedora. 
+<a href="https://docs.docker.com/v1.5/installation/fedora/">https://docs.docker.com/v1.5/installation/fedora/</a>
+</p>
+
+<ul class="org-ul">
+<li>docker-io was renamed to docker from Fedora 21, so use "docker-io" on older red hat
+derivates, "docker" on newer</li>
+
+<li>Use a sudo capable user to run docker commands, or the root user</li>
+
+<li>You can also add a docker group with rights to use the docker socket
+needed to communicate with the docker daemon.</li>
+</ul>
+
+<p>
+This approach is described here
+<a href="https://docs.docker.com/v1.5/installation/fedora/">https://docs.docker.com/v1.5/installation/fedora/</a>
+</p>
+
+<p>
+In summary:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">$ sudo groupadd docker
+$ sudo chown root:docker /var/run/docker.sock
+$ sudo usermod -a -G docker $<span style="color: #ff694d;">USERNAME</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>You might need "setenforce 0" to start docker.  The comand will
+disable selinux, which has security implications. Use this only on a
+test machine.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.2.1</span> setting up a basic git server</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+bare repo:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #96a5d9; font-style: italic;">cd</span> /opt/git 
+mkdir project.git
+<span style="color: #96a5d9; font-style: italic;">cd</span> project.git
+git init --bare
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Now try cloning, making changes, and pushing to the server</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.2.2</span> Gerrit</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
+sudo dnf install git-review
+git pull --rebase origin master
+git rebase -i origin/master
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.2.3</span> Gitlab</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+mkdir gitlab 
+cd gitlab 
+wget <a href="https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml">https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</a>
+docker-compose up
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">1.3</span> ch5 Build the code</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Create a "freestyle" class job that runs the "fortune" command.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">dnf install jenkins
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.3.1</span> Cheating with FPM</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+To install fpm:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">yum install rubygems
+yum install ruby
+yum install ruby-devel
+gem install fpm
+</pre>
+</div>
+
+<p>
+Package this shell script:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #2872b2;">#</span><span style="color: #2872b2;">!/bin/</span><span style="color: #96a5d9; font-weight: bold;">sh</span>
+<span style="color: #96a5d9; font-style: italic;">echo</span> <span style="color: #68f6cb;">'Hello World!'</span>
+
+chmod a+x usr/local/bin/hello.sh
+fpm -s dir -t rpm -n hello-world -v 1 -C installdir usr
+
+rpm -qivp hello-world.rpm
+rpm -ivh hello-world.rpm
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">1.4</span> ch6 Test the code</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.4.1</span> A Junit example</h4>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">1.4.2</span> Mocking</h4>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.4.3</span> Test Coverage</h4>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.4.4</span> Docker in automated testing</h4>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">1.4.5</span> Arquilian</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+hello world
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">1.4.6</span> Performance testing</h4>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.4.7</span> Automated acceptance testing</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<p>
+cucumber hello worldd
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">1.4.8</span> A complete test automation scenario</h4>
+<div class="outline-text-4" id="text-1-4-8">
+</div><ol class="org-ol"><li><a id="orgheadline17"></a>Running the automated test<br  /><div class="outline-text-5" id="text-1-4-8-1">
+<p>
+autotest<sub>v1</sub>/bin/autotest.sh
+</p>
+</div></li>
+<li><a id="orgheadline18"></a>Handling the tricky dependencies with Docker<br  /><div class="outline-text-5" id="text-1-4-8-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -d -p 4444:4444 --name selenium-hub selenium/hub
+docker run -d --link selenium-hub:hub selenium/node-firefox
+</pre>
+</div>
+</div></li></ol>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">1.5</span> ch7 Deploying the code</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">1.5.1</span> Virtualization stacks</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+script to install vbox
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">1.5.2</span> Executing code on the client</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+salt -E '.*' cmd.run 'ls -l'
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">1.5.3</span> Puppet master, Puppet agent</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+rfkrocktk/puppet is a convenient docker image for exploring puppet. 
+</p>
+
+<p>
+docker &#x2013;name dockerduck &#x2013;hostname dockerduck -e PUPPETMASTER<sub>TCP</sub><sub>HOST</sub>=ultramaster.example.com \
+    -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
+</p>
+
+<p>
+ssh ultramaster
+ultramaster:~ $ puppet cert list
+dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">1.5.4</span> Ansible</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+FROM williamyeh/ansible:centos7
+docker run -v `pwd`/ansible:/ansible  -it &lt;hash&gt; bash
+cd /ansible
+ansible-playbook -i inventory playbook.yml    &#x2013;connection=local &#x2013;sudo
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">1.5.5</span> Palletops</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+cd pallet
+docker-compose up
+</p>
+
+<p>
+docker exec -it pallet  bash 
+lein repl
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">1.5.6</span> Deploying with Chef</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+docker run -it ubuntu
+curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.com/chef/install.sh</a> | bash
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">1.5.7</span> Deploying with Saltstack</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<p>
+docker run -i -t &#x2013;name=saltdocker<sub>master</sub><sub>1</sub> -h master -p 4505 -p 4506 \
+   -p 8080 -p 8081 -e SALT<sub>NAME</sub>=master -e SALT<sub>USE</sub>=master \
+   -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">1.5.8</span> Vagrant</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<p>
+yum install 'vagrant*'
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">1.5.9</span> Deploying with Docker</h4>
+</div>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">1.5.10</span> AWS</h4>
+</div>
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">1.5.11</span> Azure</h4>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">1.6</span> ch8 Monitoring the code</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">1.6.1</span> Nagios</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+docker run -e     NAGIOSADMIN<sub>USER</sub>=nagiosadmin -e NAGIOSAMDIN<sub>PASS</sub>=nagios  -p 80:30000 cpuguy83/nagios 
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">1.6.2</span> Munin</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<p>
+docker run -p 30005:80 lrivallain/munin:latest
+&#x2026; etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-4">
+<h4 id="orgheadline35"><span class="section-number-4">1.6.3</span> Ganglia</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<p>
+docker run wookietreiber/ganglia &#x2013;help
+&#x2026; etc
+the docker compose example is broken!
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36"><span class="section-number-4">1.6.4</span> Graphite</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<p>
+ docker run -it \
+  -p 30020:80 \
+  -p 2003:2003 \
+  sitespeedio/graphite
+&#x2026;etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">1.6.5</span> Log handling</h4>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">1.7</span> ch9 Issue Tracking</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Joakim Verona</p>
+<p class="date">Created: 2016-01-20 Wed 22:01</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
