@@ -23,10 +23,19 @@ lein build
 lein run
 #+END_SRC
 ** ch4 Everything is code
+*** Instructions for Docker
+These instructions are for Fedora, but they are similar for other
+distributions such as Ubuntu.
+
 To make sure Docker is working properly,
 see the following documentation for Fedora. 
 
 https://docs.docker.com/v1.5/installation/fedora/
+
+- For fedora 21 and later do: 
+#+BEGIN_SRC sh
+dnf  -y install docker
+#+END_SRC
 
 - docker-io was renamed to docker from Fedora 21, so use "docker-io" on older red hat
   derivates, "docker" on newer
@@ -50,6 +59,17 @@ $ sudo usermod -a -G docker $USERNAME
   disable selinux, which has security implications. Use this only on a
   test machine.
 
+- To start and enable docker on reboot:
+#+BEGIN_SRC sh
+sudo systemctl start docker
+sudo systemctl enable docker
+#+END_SRC
+
+To verify that docker works:
+#+BEGIN_SRC sh
+sudo docker run -i -t fedora /bin/bash
+#+END_SRC
+
 *** setting up a basic git server
 bare repo:
 #+BEGIN_SRC sh
@@ -61,18 +81,40 @@ git init --bare
 
 - Now try cloning, making changes, and pushing to the server
 *** Gerrit 
+Run a Gerrit container:
 #+BEGIN_SRC sh
 docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
+#+END_SRC
+
+On the host machine you can now install the supporting git-review
+package:
+#+BEGIN_SRC sh
 sudo dnf install git-review
+#+END_SRC
+
+# TODO needs explanation
 git pull --rebase origin master
 git rebase -i origin/master
-#+END_SRC
+
 *** COMMENT The Pull Request model
 *** Gitlab
+You need to have docker-compose installed first.
+On Fedora 23 you can now do:
+#+BEGIN_SRC sh
+dnf install docker-compose
+#+END_SRC
+
+Now create a directory for gitlab, and fetch the compose file:
+#+BEGIN_SRC sh
 mkdir gitlab 
 cd gitlab 
 wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+#+END_SRC
+
+Now start the gitlab stack.
+#+BEGIN_SRC sh
 docker-compose up
+#+END_SRC
 
 ** ch5 Build the code
 Create a "freestyle" class job that runs the "fortune" command.
