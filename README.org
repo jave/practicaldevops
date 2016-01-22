@@ -116,12 +116,27 @@ Now start the gitlab stack.
 docker-compose up
 #+END_SRC
 
+When the containers are up and running, access the web ui:
+
+http://loaclhost:10080
+
+and enter the following credentials:
+
+- username: root
+- password: 5iveL!fe
+
+
+
 ** ch5 Build the code
-Create a "freestyle" class job that runs the "fortune" command.
+Create a "freestyle" class job in Jenkins that runs the "fortune"
+command.
+
+First install Jenkins.
 #+BEGIN_SRC sh
 dnf install jenkins
 #+END_SRC
 
+Then follow the instruction in the book to configure the job.
 *** Cheating with FPM
 To install fpm:
 #+BEGIN_SRC sh
