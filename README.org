@@ -164,15 +164,36 @@ rpm -ivh hello-world.rpm
 
 ** ch6 Test the code
 *** A Junit example
-# TODO ?? seems kind of emoty.
+#+BEGIN_SRC shell
+cd ch6/hello-junit
+mvn install
+#+END_SRC
 *** Mocking
 *** Test Coverage
 *** Docker in automated testing
 *** Arquilian
-hello world
+#+BEGIN_SRC java
+git clone https://github.com/aslakknutsen/arquillian-example-helloworld.git
+cd arquillian-example-helloworld
+mvn install
+#+END_SRC
 *** Performance testing
 *** Automated acceptance testing
-cucumber hello worldd
+There are two implementations, one with annotations, and one with
+Lambda notation.
+
+To run the annotation based example: 
+#+BEGIN_SRC java
+cd ch6/hello-cucumber6
+mvn clean test
+#+END_SRC
+
+To run the lambda based example: 
+#+BEGIN_SRC java
+cd ch6/hello-cucumber8
+mvn clean test
+#+END_SRC
+
 *** A complete test automation scenario
 **** Running the automated test
 autotest_v1/bin/autotest.sh
@@ -183,7 +204,7 @@ docker run -d --link selenium-hub:hub selenium/node-firefox
 #+END_SRC
 ** ch7 Deploying the code
 *** Virtualization stacks
-script to install vbox
+# TODO script to install vbox
 *** Executing code on the client
 #+BEGIN_SRC sh
 salt -E '.*' cmd.run 'ls -l'
@@ -220,7 +241,8 @@ docker exec -it pallet  bash
 lein repl
 *** Deploying with Chef
 docker run -it ubuntu
-curl -L https://www.opscode.com/chef/install.sh | bash
+curl -L https://www.opsco
+de.com/chef/install.sh | bash
 ... etc
 *** Deploying with Saltstack
 #+BEGIN_SRC sh
