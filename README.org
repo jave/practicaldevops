@@ -195,8 +195,28 @@ mvn clean test
 #+END_SRC
 
 *** A complete test automation scenario
+**** hello-selenium-world
+Hello selenium world is a minimal selenium example that should
+open a firefox browser window and ask google 'hello world'.
+You should see a list of search matches for 'hello world'.
+
+It is useful to check that this example runs before testing other examples.
+To run it:
+#+BEGIN_SRC sh
+cd ch6/hello-selenium
+mvn test
+#+END_SRC
+**** Running the usermanager example manually
+You will need Leiningen, http://leiningen.org/
+https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+#+BEGIN_SRC sh
+ch6/usermanager
+lein run
+#+END_SRC
 **** Running the automated test
+#+BEGIN_SRC sh
 autotest_v1/bin/autotest.sh
+#+END_SRC
 **** Handling the tricky dependencies with Docker
 #+BEGIN_SRC sh
 docker run -d -p 4444:4444 --name selenium-hub selenium/hub
