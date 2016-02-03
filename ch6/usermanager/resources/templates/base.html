@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to usermanager</title>
+  </head>
+  <body>
+      <!-- navbar -->
+      <div id="navbar">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle"
+                            data-target="#app-navbar"
+                            data-toggle="collapse"
+                            aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{servlet-context}}/"
+                    class="navbar-brand">Matangle usermanager</a>
+                </div>
+                <div id="app-navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li {% ifequal page "home.html" %} class="active"{%endifequal%}>
+                        <a href="{{servlet-context}}/">Home</a>
+                        </li>
+                        <li {% ifequal page "about.html" %} class="active"{%endifequal%}>
+                        <a href="{{servlet-context}}/about">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <!-- scripts and styles -->
+    {% style "/assets/bootstrap/css/bootstrap.min.css" %}
+    {% style "/assets/bootstrap/css/bootstrap-theme.min.css" %}
+    {% style "/css/screen.css" %}
+
+    {% script "/assets/jquery/jquery.min.js" %}
+    {% script "/assets/bootstrap/js/bootstrap.min.js" %}
+    {% script "/assets/bootstrap/js/collapse.js" %}
+
+    <script type="text/javascript">
+      var context = "{{servlet-context}}";
+    </script>
+    {% block page-scripts %}
+    {% endblock %}
+  </body>
+</html>

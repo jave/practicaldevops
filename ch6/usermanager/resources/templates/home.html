@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to usermanager</h1>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <input type="submit" class="btn btn-primary"
+             onclick="window.location.href = '/searchuser';"
+              value="Search for User" /></br>
+       </br>
+       <input type="submit" class="btn btn-primary"
+              onclick="window.location.href = '/useradd';"
+              value="Add User" /></br>
+       </br>
+       <!-- <input type="submit" class="btn btn-primary" -->
+       <!--          value="Delete User" /></br> -->
+
+    </div>
+
+  </div>
+{% endblock %}
