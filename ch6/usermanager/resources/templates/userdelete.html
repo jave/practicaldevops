@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
-  <h1>Add User</h1>
+  <h1>Delete User</h1>
 </div>
 
 <div class="row">
   <div class="span12">
-    <form method="POST" action="/useradded">
+    <form method="POST" action="/userdeleted">
       {% csrf-field %}
       <p>
         Name:
@@ -23,7 +23,7 @@
                value="{{surname}}" />
       </p>
       <input type="submit" class="btn btn-primary"
-             value="Add User" />
+             value="Delete User" />
     </form>
   </div>
 </div>

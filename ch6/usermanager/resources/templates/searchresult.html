@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Matching Users</h1>
+  </div>
+
+{% for user in users %}
+  <div class="row">
+    <div class="span12">
+      Name:
+      value="{{user.name}}"
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      Surname:
+      value="{{user.surname}}"
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
