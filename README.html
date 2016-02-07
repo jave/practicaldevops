@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-01-20 Wed 22:45 -->
+<!-- 2016-02-07 Sun 21:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -147,7 +147,7 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline41">1. Code samples for the Practical Devops book</a>
+<li><a href="#orgheadline42">1. Code samples for the Practical Devops book</a>
 <ul>
 <li><a href="#orgheadline3">1.1. ch3 How Architecture affects DevOps</a>
 <ul>
@@ -155,67 +155,72 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">1.1.2. Manual installation</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline7">1.2. ch4 Everything is code</a>
+<li><a href="#orgheadline8">1.2. ch4 Everything is code</a>
 <ul>
-<li><a href="#orgheadline4">1.2.1. setting up a basic git server</a></li>
-<li><a href="#orgheadline5">1.2.2. Gerrit</a></li>
-<li><a href="#orgheadline6">1.2.3. Gitlab</a></li>
+<li><a href="#orgheadline4">1.2.1. Docker intermission</a></li>
+<li><a href="#orgheadline5">1.2.2. setting up a basic git server</a></li>
+<li><a href="#orgheadline6">1.2.3. Gerrit</a></li>
+<li><a href="#orgheadline7">1.2.4. Gitlab</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline9">1.3. ch5 Build the code</a>
+<li><a href="#orgheadline11">1.3. ch5 Build the code</a>
 <ul>
-<li><a href="#orgheadline8">1.3.1. Cheating with FPM</a></li>
+<li><a href="#orgheadline9">1.3.1. Cheating with FPM</a></li>
+<li><a href="#orgheadline10">1.3.2. Build servers, Jenkins in particular</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline20">1.4. ch6 Test the code</a>
 <ul>
-<li><a href="#orgheadline10">1.4.1. A Junit example</a></li>
-<li><a href="#orgheadline11">1.4.2. Mocking</a></li>
-<li><a href="#orgheadline12">1.4.3. Test Coverage</a></li>
-<li><a href="#orgheadline13">1.4.4. Docker in automated testing</a></li>
-<li><a href="#orgheadline14">1.4.5. Arquilian</a></li>
-<li><a href="#orgheadline15">1.4.6. Performance testing</a></li>
-<li><a href="#orgheadline16">1.4.7. Automated acceptance testing</a></li>
-<li><a href="#orgheadline19">1.4.8. A complete test automation scenario</a></li>
+<li><a href="#orgheadline12">1.4.1. A Junit example</a></li>
+<li><a href="#orgheadline13">1.4.2. Arquilian</a></li>
+<li><a href="#orgheadline14">1.4.3. Automated acceptance testing</a></li>
+<li><a href="#orgheadline19">1.4.4. A complete test automation scenario</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline32">1.5. ch7 Deploying the code</a>
+<li><a href="#orgheadline27">1.5. ch7 Deploying the code</a>
 <ul>
-<li><a href="#orgheadline21">1.5.1. Virtualization stacks</a></li>
-<li><a href="#orgheadline22">1.5.2. Executing code on the client</a></li>
-<li><a href="#orgheadline23">1.5.3. Puppet master, Puppet agent</a></li>
-<li><a href="#orgheadline24">1.5.4. Ansible</a></li>
-<li><a href="#orgheadline25">1.5.5. Palletops</a></li>
-<li><a href="#orgheadline26">1.5.6. Deploying with Chef</a></li>
-<li><a href="#orgheadline27">1.5.7. Deploying with Saltstack</a></li>
-<li><a href="#orgheadline28">1.5.8. Vagrant</a></li>
-<li><a href="#orgheadline29">1.5.9. Deploying with Docker</a></li>
-<li><a href="#orgheadline30">1.5.10. AWS</a></li>
-<li><a href="#orgheadline31">1.5.11. Azure</a></li>
+<li><a href="#orgheadline21">1.5.1. Executing code on the client</a></li>
+<li><a href="#orgheadline22">1.5.2. Puppet master, Puppet agent</a></li>
+<li><a href="#orgheadline23">1.5.3. Ansible</a></li>
+<li><a href="#orgheadline24">1.5.4. Deploying with Chef</a></li>
+<li><a href="#orgheadline25">1.5.5. Deploying with Saltstack</a></li>
+<li><a href="#orgheadline26">1.5.6. Vagrant</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline38">1.6. ch8 Monitoring the code</a>
+<li><a href="#orgheadline33">1.6. ch8 Monitoring the code</a>
 <ul>
-<li><a href="#orgheadline33">1.6.1. Nagios</a></li>
-<li><a href="#orgheadline34">1.6.2. Munin</a></li>
-<li><a href="#orgheadline35">1.6.3. Ganglia</a></li>
-<li><a href="#orgheadline36">1.6.4. Graphite</a></li>
-<li><a href="#orgheadline37">1.6.5. Log handling</a></li>
+<li><a href="#orgheadline28">1.6.1. Nagios</a></li>
+<li><a href="#orgheadline29">1.6.2. Munin</a></li>
+<li><a href="#orgheadline30">1.6.3. Ganglia</a></li>
+<li><a href="#orgheadline31">1.6.4. Graphite</a></li>
+<li><a href="#orgheadline32">1.6.5. Log handling</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline39">1.7. ch9 Issue Tracking</a></li>
-<li><a href="#orgheadline40">1.8. ch10 The Internet of Things and DevOps</a></li>
+<li><a href="#orgheadline39">1.7. ch9 Issue Tracking</a>
+<ul>
+<li><a href="#orgheadline34">1.7.1. Bugzilla</a></li>
+<li><a href="#orgheadline35">1.7.2. Trac</a></li>
+<li><a href="#orgheadline36">1.7.3. Redmine</a></li>
+<li><a href="#orgheadline37">1.7.4. The Gitlab issue tracker</a></li>
+<li><a href="#orgheadline38">1.7.5. Jira</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline41">1.8. ch10 The Internet of Things and DevOps</a>
+<ul>
+<li><a href="#orgheadline40">1.8.1. NodeMCU</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline41" class="outline-2">
-<h2 id="orgheadline41"><span class="section-number-2">1</span> Code samples for the Practical Devops book</h2>
+<div id="outline-container-orgheadline42" class="outline-2">
+<h2 id="orgheadline42"><span class="section-number-2">1</span> Code samples for the Practical Devops book</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 These are the code samples for the book "Practical Devops" by Joakim
-Verona at Packt Publishing.
+Verona published by Packt Publishing.
 </p>
 
 <p>
@@ -224,15 +229,47 @@ The books home page:
 </p>
 
 <p>
-The code repository at github:
-<a href="https://github.com/jave/practicaldevops.git">https://github.com/jave/practicaldevops.git</a>
+In most cases you will need the book to make the most out of the exercises.
 </p>
+
+<p>
+Please ensure that you have the latest version of these exercises
+before continuing.
+</p>
+
+<p>
+To get the code samples from Github do:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell">git clone https://github.com/jave/practicaldevops.git
+</pre>
 </div>
+
+<p>
+And to keep the samples updated, 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell"><span style="color: #96a5d9; font-style: italic;">cd</span> practicaldevops
+git pull https://github.com/jave/practicaldevops.git
+</pre>
+</div>
+</div>
+
 <div id="outline-container-orgheadline3" class="outline-3">
 <h3 id="orgheadline3"><span class="section-number-3">1.1</span> ch3 How Architecture affects DevOps</h3>
 <div class="outline-text-3" id="text-1-1">
 </div><div id="outline-container-orgheadline1" class="outline-4">
 <h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Liquibase hello-world</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<div class="org-src-container">
+
+<pre class="src src-shell-script"><span style="color: #96a5d9; font-style: italic;">cd</span> ch3/liquibase-helloworld
+mvn liquibase:update
+</pre>
+</div>
+</div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-4">
@@ -250,9 +287,17 @@ lein run
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">1.2</span> ch4 Everything is code</h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.2</span> ch4 Everything is code</h3>
 <div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.2.1</span> Docker intermission</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+These instructions are for Fedora, but they are similar for other
+distributions such as Ubuntu.
+</p>
+
 <p>
 To make sure Docker is working properly,
 see the following documentation for Fedora. 
@@ -261,6 +306,15 @@ see the following documentation for Fedora.
 <p>
 <a href="https://docs.docker.com/v1.5/installation/fedora/">https://docs.docker.com/v1.5/installation/fedora/</a>
 </p>
+
+<ul class="org-ul">
+<li>For fedora 21 and later do:</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">dnf  -y install docker
+</pre>
+</div>
 
 <ul class="org-ul">
 <li>docker-io was renamed to docker from Fedora 21, so use "docker-io" on older red hat
@@ -292,12 +346,46 @@ $ sudo usermod -a -G docker $<span style="color: #ff694d;">USERNAME</span>
 <li>You might need "setenforce 0" to start docker.  The comand will
 disable selinux, which has security implications. Use this only on a
 test machine.</li>
+
+<li>To start and enable docker on reboot:</li>
 </ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo systemctl start docker
+sudo systemctl enable docker
+</pre>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">1.2.1</span> setting up a basic git server</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<p>
+To verify that docker works:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo docker run -i -t fedora /bin/bash
+</pre>
+</div>
+
+<p>
+For some exercises you need to have docker-compose installed first.
+</p>
+
+<p>
+On Fedora 23 you can do:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">dnf install docker-compose
+</pre>
+</div>
+
+<p>
+In earlier versions you needed to download docker-compose manually.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.2.2</span> setting up a basic git server</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <p>
 bare repo:
 </p>
@@ -315,47 +403,118 @@ git init --bare
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">1.2.2</span> Gerrit</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.2.3</span> Gerrit</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Run a Gerrit container:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-sh">docker run -d -p 8080:8080 -p 29418:29418 openfrontier/gerrit
-sudo dnf install git-review
-git pull --rebase origin master
-git rebase -i origin/master
+</pre>
+</div>
+
+<p>
+On the host machine you can now install the supporting git-review
+package:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo dnf install git-review
+</pre>
+</div>
+
+<p>
+Rebase your commits on top of the commits in the remote repository:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git pull --rebase origin master
+</pre>
+</div>
+
+<p>
+Interactively edit the history, possibly squashing commits together to
+make a more readable history:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git rebase -i origin/master
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">1.2.3</span> Gitlab</h4>
-<div class="outline-text-4" id="text-1-2-3">
+
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.2.4</span> Gitlab</h4>
+<div class="outline-text-4" id="text-1-2-4">
 <p>
-mkdir gitlab 
-cd gitlab 
-wget <a href="https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml">https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</a>
-docker-compose up
+Now create a directory for gitlab, and fetch the compose file:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir gitlab 
+<span style="color: #96a5d9; font-style: italic;">cd</span> gitlab 
+wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+</pre>
+</div>
+
+<p>
+Now start the gitlab stack.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker-compose up
+</pre>
+</div>
+
+<p>
+When the containers are up and running, access the web ui:
+</p>
+
+<p>
+<a href="http://loaclhost:10080">http://loaclhost:10080</a>
+</p>
+
+<p>
+and enter the following credentials:
+</p>
+
+<ul class="org-ul">
+<li>username: root</li>
+<li>password: 5iveL!fe</li>
+</ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">1.3</span> ch5 Build the code</h3>
+
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.3</span> ch5 Build the code</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-Create a "freestyle" class job that runs the "fortune" command.
+Create a "freestyle" class job in Jenkins that runs the "fortune"
+command.
+</p>
+
+<p>
+First install Jenkins.
 </p>
 <div class="org-src-container">
 
 <pre class="src src-sh">dnf install jenkins
 </pre>
 </div>
-</div>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">1.3.1</span> Cheating with FPM</h4>
+<p>
+Then follow the instruction in the book to configure the job.
+</p>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.3.1</span> Cheating with FPM</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 To install fpm:
@@ -386,50 +545,133 @@ rpm -ivh hello-world.rpm
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.3.2</span> Build servers, Jenkins in particular</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<div class="org-src-container">
+
+<pre class="src src-shell">dnf install jenkins
+</pre>
 </div>
+
+<div class="org-src-container">
+
+<pre class="src src-shell">systemctl start jenkins
+</pre>
+</div>
+</div>
+</div>
+</div>
+
 <div id="outline-container-orgheadline20" class="outline-3">
 <h3 id="orgheadline20"><span class="section-number-3">1.4</span> ch6 Test the code</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">1.4.1</span> A Junit example</h4>
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.4.1</span> A Junit example</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+
+<pre class="src src-shell"><span style="color: #96a5d9; font-style: italic;">cd</span> ch6/hello-junit
+mvn install
+</pre>
 </div>
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">1.4.2</span> Mocking</h4>
 </div>
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">1.4.3</span> Test Coverage</h4>
 </div>
 <div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">1.4.4</span> Docker in automated testing</h4>
+<h4 id="orgheadline13"><span class="section-number-4">1.4.2</span> Arquilian</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+There is an arquillian hello-world in the Arquillian documentation.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">git <span style="color: #f5b55f;">clone</span> <span style="color: #ff694d;">https</span>:<span style="color: #2872b2;">//</span><span style="color: #2872b2;">github.com/aslakknutsen/arquillian-example-helloworld.git</span>
+cd arquillian-example-helloworld
+mvn install
+</pre>
 </div>
+</div>
+</div>
+
 <div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">1.4.5</span> Arquilian</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<h4 id="orgheadline14"><span class="section-number-4">1.4.3</span> Automated acceptance testing</h4>
+<div class="outline-text-4" id="text-1-4-3">
 <p>
-hello world
+There are two implementations, one with annotations, and one with
+Lambda notation.
 </p>
-</div>
-</div>
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">1.4.6</span> Performance testing</h4>
-</div>
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">1.4.7</span> Automated acceptance testing</h4>
-<div class="outline-text-4" id="text-1-4-7">
+
 <p>
-cucumber hello worldd
+While the lambda notation is easier to read than the annotation
+syntax, cucumbers lambda notation is fairly new and can be problematic
+to get to work depending on your Java implementation.
 </p>
+
+<p>
+To run the annotation based example: 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #f5b55f;">cd</span> <span style="color: #ff694d;">ch6</span>/hello-cucumber6
+mvn clean test
+</pre>
+</div>
+
+<p>
+To run the lambda based example: 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #f5b55f;">cd</span> <span style="color: #ff694d;">ch6</span>/hello-cucumber8
+mvn clean test
+</pre>
 </div>
 </div>
+</div>
+
+
+
 <div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19"><span class="section-number-4">1.4.8</span> A complete test automation scenario</h4>
-<div class="outline-text-4" id="text-1-4-8">
-</div><ol class="org-ol"><li><a id="orgheadline17"></a>Running the automated test<br  /><div class="outline-text-5" id="text-1-4-8-1">
+<h4 id="orgheadline19"><span class="section-number-4">1.4.4</span> A complete test automation scenario</h4>
+<div class="outline-text-4" id="text-1-4-4">
+</div><ol class="org-ol"><li><a id="orgheadline15"></a>hello-selenium-world<br  /><div class="outline-text-5" id="text-1-4-4-1">
 <p>
-autotest<sub>v1</sub>/bin/autotest.sh
+Hello selenium world is a minimal selenium example that should
+open a firefox browser window and ask google 'hello world'.
+You should see a list of search matches for 'hello world'.
 </p>
+
+<p>
+It is useful to check that this example runs before testing other examples.
+To run it:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #96a5d9; font-style: italic;">cd</span> ch6/hello-selenium
+mvn test
+</pre>
+</div>
 </div></li>
-<li><a id="orgheadline18"></a>Handling the tricky dependencies with Docker<br  /><div class="outline-text-5" id="text-1-4-8-2">
+<li><a id="orgheadline16"></a>Running the usermanager example manually<br  /><div class="outline-text-5" id="text-1-4-4-2">
+<p>
+You will need Leiningen, <a href="http://leiningen.org/">http://leiningen.org/</a>
+<a href="https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein">https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein</a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">ch6/usermanager
+lein run
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline17"></a>Running the automated test<br  /><div class="outline-text-5" id="text-1-4-4-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">autotest_v1/bin/autotest.sh
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline18"></a>Handling the tricky dependencies with Docker<br  /><div class="outline-text-5" id="text-1-4-4-4">
 <div class="org-src-container">
 
 <pre class="src src-sh">docker run -d -p 4444:4444 --name selenium-hub selenium/hub
@@ -439,20 +681,12 @@ docker run -d --link selenium-hub:hub selenium/node-firefox
 </div></li></ol>
 </div>
 </div>
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32"><span class="section-number-3">1.5</span> ch7 Deploying the code</h3>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">1.5</span> ch7 Deploying the code</h3>
 <div class="outline-text-3" id="text-1-5">
 </div><div id="outline-container-orgheadline21" class="outline-4">
-<h4 id="orgheadline21"><span class="section-number-4">1.5.1</span> Virtualization stacks</h4>
+<h4 id="orgheadline21"><span class="section-number-4">1.5.1</span> Executing code on the client</h4>
 <div class="outline-text-4" id="text-1-5-1">
-<p>
-script to install vbox
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="orgheadline22"><span class="section-number-4">1.5.2</span> Executing code on the client</h4>
-<div class="outline-text-4" id="text-1-5-2">
 <div class="org-src-container">
 
 <pre class="src src-sh">salt -E <span style="color: #68f6cb;">'.*'</span> cmd.run <span style="color: #68f6cb;">'ls -l'</span>
@@ -461,12 +695,17 @@ script to install vbox
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="orgheadline23"><span class="section-number-4">1.5.3</span> Puppet master, Puppet agent</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">1.5.2</span> Puppet master, Puppet agent</h4>
+<div class="outline-text-4" id="text-1-5-2">
 <p>
 rfkrocktk/puppet is a convenient docker image for exploring puppet. 
 </p>
+
+<ul class="org-ul">
+<li><a href="https://hub.docker.com/r/rfkrocktk/puppet/">https://hub.docker.com/r/rfkrocktk/puppet/</a> this is the agent</li>
+<li><a href="https://hub.docker.com/r/rfkrocktk/puppetmaster/">https://hub.docker.com/r/rfkrocktk/puppetmaster/</a> this is the master</li>
+</ul>
 
 <div class="org-src-container">
 
@@ -474,57 +713,163 @@ rfkrocktk/puppet is a convenient docker image for exploring puppet.
     -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
 </pre>
 </div>
-<p>
-ssh ultramaster
-ultramaster:~ $ puppet cert list
-dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
-</p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-4">
-<h4 id="orgheadline24"><span class="section-number-4">1.5.4</span> Ansible</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">1.5.3</span> Ansible</h4>
+<div class="outline-text-4" id="text-1-5-3">
 <div class="org-src-container">
 
 <pre class="src src-Dockerfile">FROM williamyeh/ansible:centos7
-docker run -v `pwd`/ansible:/ansible  -it &lt;hash&gt; bash
-cd /ansible
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -v <span style="color: #fa8072;">`pwd`</span>/ansible:/ansible  -it &lt;hash&gt; bash
+<span style="color: #96a5d9; font-style: italic;">cd</span> /ansible
 ansible-playbook -i inventory playbook.yml    --connection=local --sudo
 </pre>
 </div>
-<p>
-&#x2026; etc
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="orgheadline25"><span class="section-number-4">1.5.5</span> Palletops</h4>
-<div class="outline-text-4" id="text-1-5-5">
-<p>
-cd pallet
-docker-compose up
-</p>
 
 <p>
-docker exec -it pallet  bash 
-lein repl
+A docker container which supports systemd:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-dockerfile"><span style="color: #96a5d9; font-weight: bold;">FROM</span> fedora
+<span style="color: #96a5d9; font-weight: bold;">RUN</span> yum -y update; yum clean all
+<span style="color: #96a5d9; font-weight: bold;">RUN</span> yum install  ansible sudo
+<span style="color: #96a5d9; font-weight: bold;">RUN</span> systemctl mask systemd-remount-fs.service dev-hugepages.mount <span style="color: #68f6cb;">\</span>
+sys-fs-fuse-connections.mount <span style="color: #68f6cb;">\</span>
+systemd-logind.service getty.target console-getty.service
+<span style="color: #96a5d9; font-weight: bold;">RUN</span> cp /usr/lib/systemd/system/dbus.service /etc/systemd/system/;<span style="color: #68f6cb;">\</span>
+sed -i <span style="color: #68f6cb;">'s/OOMScoreAdjust=-900//'</span> /etc/systemd/system/dbus.service
+
+<span style="color: #96a5d9; font-weight: bold;">VOLUME</span> [<span style="color: #68f6cb;">"/sys/fs/cgroup"</span>, <span style="color: #68f6cb;">"/run"</span>, <span style="color: #68f6cb;">"/tmp"</span>]
+<span style="color: #96a5d9; font-weight: bold;">ENV</span> <span style="color: #ff694d;">container</span>=docker
+
+<span style="color: #96a5d9; font-weight: bold;">CMD</span> [<span style="color: #68f6cb;">"/usr/sbin/init"</span>]
+</pre>
 </div>
-</div>
-<div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="orgheadline26"><span class="section-number-4">1.5.6</span> Deploying with Chef</h4>
-<div class="outline-text-4" id="text-1-5-6">
+
 <p>
-docker run -it ubuntu
-curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.com/chef/install.sh</a> | bash
-&#x2026; etc
+To run the new container:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker run -it --rm -v /sys/fs/cgroup:/sys/fs/cgroup:ro  -v <span style="color: #fa8072;">`pwd`</span>/ansible:/ansible &lt;hash&gt;
+</pre>
+</div>
+
+<p>
+Connect to the container:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker exec -it &lt;hash&gt; bash
+</pre>
+</div>
+
+<p>
+A slightly more advanced exercise:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #2872b2;">---</span>
+- <span style="color: #ff694d;">hosts</span>: localhost
+  <span style="color: #ff694d;">vars</span>:
+    <span style="color: #ff694d;">http_port</span>: 80
+    <span style="color: #ff694d;">max_clients</span>: 200
+  <span style="color: #ff694d;">remote_user</span>: root
+  <span style="color: #ff694d;">tasks</span>:
+  - <span style="color: #ff694d;">name</span>: ensure apache is at the latest version
+    <span style="color: #ff694d;">yum</span>: name=httpd state=latest
+  - <span style="color: #ff694d;">name</span>: write the apache config file
+    <span style="color: #ff694d;">template</span>: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    <span style="color: #ff694d;">notify</span>:
+    - restart apache
+  - <span style="color: #ff694d;">name</span>: ensure apache is running (and enable it at boot)
+    <span style="color: #ff694d;">service</span>: name=httpd state=started enabled=yes
+  <span style="color: #ff694d;">handlers</span>:
+    - <span style="color: #ff694d;">name</span>: restart apache
+      <span style="color: #ff694d;">service</span>: name=httpd state=restarted
+</pre>
 </div>
 </div>
-<div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27"><span class="section-number-4">1.5.7</span> Deploying with Saltstack</h4>
-<div class="outline-text-4" id="text-1-5-7">
+</div>
+
+
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">1.5.4</span> Deploying with Chef</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Start a clean container for the exercise:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -it ubuntu bash
+</pre>
+</div>
+
+<p>
+Install Chef in the container:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">curl -L https://www.opscode.com/chef/install.sh | bash
+</pre>
+</div>
+
+<p>
+Verify the chef-solo was installed:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">chef-solo -v
+</pre>
+</div>
+
+<p>
+Fetch and unpack a pre-rolled chef configuration:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">curl -L  http://github.com/opscode/chef-repo/tarball/master -o master.tgz
+tar -zxf master.tgz
+mv chef-repo* chef-repo
+rm master.tgz
+</pre>
+</div>
+
+<p>
+Create a configuration file for chef:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">mkdir .chef
+<span style="color: #96a5d9; font-style: italic;">echo</span> <span style="color: #68f6cb;">"cookbook_path [ '/root/chef-repo/cookbooks' ]"</span> &gt; .chef/knife.rb
+</pre>
+</div>
+
+<p>
+Now create a template:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">knife cookbook create phpapp
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">1.5.5</span> Deploying with Saltstack</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+Start a Saltstack container:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-sh">docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 <span style="color: #68f6cb;">\</span>
@@ -532,14 +877,48 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
    -v <span style="color: #fa8072;">`pwd`</span>/srv/salt:/srv/salt:rw jacksoncage/salt
 </pre>
 </div>
+
 <p>
-&#x2026; etc
+Start a shell inside the Saltstack container:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker exec -i -t saltdocker_master_1 bash
+</pre>
+</div>
+
+<p>
+Salt state to install httpd:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #ff694d;">top.sls</span>:
+<span style="color: #ff694d;">base</span>:
+  <span style="color: #68f6cb;">'*'</span>:
+    - webserver
+
+<span style="color: #ff694d;">webserver.sls</span>:
+<span style="color: #ff694d;">apache2</span>:               <span style="color: #2872b2;"># </span><span style="color: #2872b2;">ID declaration</span>
+  <span style="color: #ff694d;">pkg</span>:                <span style="color: #2872b2;"># </span><span style="color: #2872b2;">state declaration</span>
+    - installed       <span style="color: #2872b2;"># </span><span style="color: #2872b2;">function declaration</span>
+</pre>
+</div>
+
+<p>
+Run this command to ensure the desired state:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">salt-call --local state.highstate -l debug
+</pre>
 </div>
 </div>
-<div id="outline-container-orgheadline28" class="outline-4">
-<h4 id="orgheadline28"><span class="section-number-4">1.5.8</span> Vagrant</h4>
-<div class="outline-text-4" id="text-1-5-8">
+</div>
+
+
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">1.5.6</span> Vagrant</h4>
+<div class="outline-text-4" id="text-1-5-6">
 <div class="org-src-container">
 
 <pre class="src src-sh">yum install <span style="color: #68f6cb;">'vagrant*'</span>
@@ -547,26 +926,71 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
 </div>
 
 <p>
-&#x2026; etc
+To use Vagrants Virtualbox driver, you need to set up Virtualbox
+according to your distribution.
 </p>
+
+<p>
+Create a virtual machine with Vagrant from a recipy:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">vagrant init hashicorp/precise32
+</pre>
+</div>
+
+<p>
+Try starting the machine:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">vagrant up
+</pre>
+</div>
+
+<p>
+You can now ssh to the machine:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">vagrant ssh
+</pre>
+</div>
+
+<p>
+Add this to the Vagrant file:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script"><span style="color: #bad6e2;">Vagrant.configure</span>(<span style="color: #68f6cb;">"2"</span>) <span style="color: #96a5d9; font-weight: bold;">do</span> |config|
+  config.vm.box = <span style="color: #68f6cb;">"hashicorp/precise32"</span>
+  config.vm.provision :shell, path: <span style="color: #68f6cb;">"bootstrap.sh"</span>
+end
+</pre>
+</div>
+
+<p>
+And create a bootstrap.sh file that will install Apache httpd:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script"><span style="color: #2872b2;">#</span><span style="color: #2872b2;">!/usr/bin/</span><span style="color: #96a5d9; font-weight: bold;">env</span><span style="color: #2872b2;"> bash</span>
+apt-get update
+apt-get install -y apache2
+</pre>
 </div>
 </div>
-<div id="outline-container-orgheadline29" class="outline-4">
-<h4 id="orgheadline29"><span class="section-number-4">1.5.9</span> Deploying with Docker</h4>
-</div>
-<div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30"><span class="section-number-4">1.5.10</span> AWS</h4>
-</div>
-<div id="outline-container-orgheadline31" class="outline-4">
-<h4 id="orgheadline31"><span class="section-number-4">1.5.11</span> Azure</h4>
 </div>
 </div>
-<div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">1.6</span> ch8 Monitoring the code</h3>
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">1.6</span> ch8 Monitoring the code</h3>
 <div class="outline-text-3" id="text-1-6">
-</div><div id="outline-container-orgheadline33" class="outline-4">
-<h4 id="orgheadline33"><span class="section-number-4">1.6.1</span> Nagios</h4>
+</div><div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">1.6.1</span> Nagios</h4>
 <div class="outline-text-4" id="text-1-6-1">
+<p>
+Start a Nagios container:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-sh">docker run -e     <span style="color: #ff694d;">NAGIOSADMIN_USER</span>=nagiosadmin -e <span style="color: #ff694d;">NAGIOSAMDIN_PASS</span>=nagios  -p 80:30000 cpuguy83/nagios
@@ -574,12 +998,103 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
 </div>
 
 <p>
-&#x2026; etc
+Start a second container to monitor:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -p 30001:80 nginx
+</pre>
+</div>
+
+<p>
+A docker compose file for the scenario:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-yml">nagios:
+  image: mt-nagios 
+  build:
+    - mt-nagios
+  ports:
+   -  80:30000 
+  environment:
+    - NAGIOSADMIN_USER=nagiosadmin
+    - NAGIOSAMDIN_PASS=nagios
+  volumes:
+   ./nagios:/etc/nagios   
+nginx:
+  image: nginx
+</pre>
+</div>
+
+<p>
+Configuration files for the Nagios example:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">define host {
+    name        regular-host
+    use         linux-server
+    register       0
+    max_check_attempts   5
+}
+
+define host{
+    use             regular-host
+    host_name       client1
+    address         192.168.200.15
+    contact_groups  admins
+    notes           test client1
+}
+</pre>
+</div>
+<p>
+hostgroups.cfg
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">define hostgroup {
+    hostgroup_name  test-group
+    <span style="color: #96a5d9; font-style: italic;">alias</span>           Test Servers
+    members         client1
+}
+
+services.cfg
+<span style="color: #2872b2;">#</span><span style="color: #2872b2;">+BEGIN_SRC sh</span>
+define service {
+    use                     generic-service
+    hostgroup_name          test-group
+    service_description     PING
+    check_command           check_ping!200.0,20%!600.0,60%
+}
+</pre>
+</div>
+
+<p>
+An example mail configuration:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">define contact{
+    contact_name                    matangle-admin
+    use                             generic-contact
+    <span style="color: #96a5d9; font-style: italic;">alias</span>                           Nagios Admin
+    email                           pd-admin@matangle.com
+}
+
+define contactgroup{
+    contactgroup_name       admins
+    <span style="color: #96a5d9; font-style: italic;">alias</span>                   Nagios Administrators
+    members                 matange-admin
+}
+</pre>
 </div>
 </div>
-<div id="outline-container-orgheadline34" class="outline-4">
-<h4 id="orgheadline34"><span class="section-number-4">1.6.2</span> Munin</h4>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">1.6.2</span> Munin</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <div class="org-src-container">
 
@@ -588,13 +1103,84 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
 </div>
 
 <p>
-&#x2026; etc
+Running commands in the munin container:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker exec -it &lt;hash&gt; bash
+su - munin --shell=/bin/bash
+/usr/share/munin/munin-update
+</pre>
+</div>
+
+<p>
+If you are having trouble running munin-update, try:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">chown munin.munin /var/log/munin/munin-update.log
+</pre>
+</div>
+
+<p>
+It may still take some time for the graphs to display.
+</p>
+
+<p>
+This is the code for the munin plugin:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">graph_title Load average
+graph_vlabel load
+load.label load
+</pre>
+</div>
+
+<p>
+To emit data you simply print it to stdout.
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #96a5d9; font-style: italic;">printf</span> <span style="color: #68f6cb;">"load.value "</span>
+cut -d<span style="color: #68f6cb;">' '</span> -f2  /proc/loadavg
+</pre>
+</div>
+
+<p>
+Here is an example script.
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #2872b2;">#</span><span style="color: #2872b2;">!/bin/</span><span style="color: #96a5d9; font-weight: bold;">sh</span>
+
+<span style="color: #96a5d9; font-weight: bold;">case</span> $<span style="color: #ff694d;">1</span><span style="color: #96a5d9; font-weight: bold;"> in</span>
+   config)
+        cat &lt;&lt;<span style="color: #68f6cb;">'EOM'</span>
+<span style="color: #ffff00; font-weight: bold;">graph_title Load average</span>
+<span style="color: #ffff00; font-weight: bold;">graph_vlabel load</span>
+<span style="color: #ffff00; font-weight: bold;">load.label load</span>
+<span style="color: #ffff00; font-weight: bold;">EOM</span>
+        <span style="color: #96a5d9; font-weight: bold;">exit</span> 0;;
+<span style="color: #96a5d9; font-weight: bold;">esac</span>
+
+<span style="color: #96a5d9; font-style: italic;">printf</span> <span style="color: #68f6cb;">"load.value "</span>
+cut -d<span style="color: #68f6cb;">' '</span> -f2  /proc/loadavg
+</pre>
 </div>
 </div>
-<div id="outline-container-orgheadline35" class="outline-4">
-<h4 id="orgheadline35"><span class="section-number-4">1.6.3</span> Ganglia</h4>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">1.6.3</span> Ganglia</h4>
 <div class="outline-text-4" id="text-1-6-3">
+<p>
+To get help with the container:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-sh">docker run wookietreiber/ganglia --help
@@ -602,47 +1188,266 @@ curl -L <a href="https://www.opscode.com/chef/install.sh">https://www.opscode.co
 </div>
 
 <p>
-&#x2026; etc
+To run the Ganglia container:
 </p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline36" class="outline-4">
-<h4 id="orgheadline36"><span class="section-number-4">1.6.4</span> Graphite</h4>
-<div class="outline-text-4" id="text-1-6-4">
 <div class="org-src-container">
 
-<pre class="src src-sh">docker run -it <span style="color: #68f6cb;">\</span>
- -p 30020:80 <span style="color: #68f6cb;">\</span>
- -p 2003:2003 <span style="color: #68f6cb;">\</span>
- sitespeedio/graphite
+<pre class="src src-sh">docker run -p 30010:80 wookietreiber/ganglia
 </pre>
 </div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">1.6.4</span> Graphite</h4>
+<div class="outline-text-4" id="text-1-6-4">
 <p>
-&#x2026;etc
+Start Graphite:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -it   -p 30020:80   -p 2003:2003   sitespeedio/graphite
+</pre>
+</div>
+
+<p>
+Try the following url: <a href="http://localhost:30020/">http://localhost:30020/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">1.6.5</span> Log handling</h4>
+<div class="outline-text-4" id="text-1-6-5">
+<p>
+Start Kibana and Elasticsearch:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">docker run -d elasticsearch &amp;&amp;
+docker run --link some-elasticsearch:elasticsearch -d kibana
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">1.7</span> ch9 Issue Tracking</h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">1.7.1</span> Bugzilla</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker run -p 6050:80 dklawren/docker-bugzilla
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-4">
+<h4 id="orgheadline35"><span class="section-number-4">1.7.2</span> Trac</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker run -d -p 6051:8080 barogi/trac:1.0.2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36"><span class="section-number-4">1.7.3</span> Redmine</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker run -d -p  6052:3000 redmine
+</pre>
+</div>
 </div>
 </div>
 <div id="outline-container-orgheadline37" class="outline-4">
-<h4 id="orgheadline37"><span class="section-number-4">1.6.5</span> Log handling</h4>
-</div>
-</div>
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39"><span class="section-number-3">1.7</span> ch9 Issue Tracking</h3>
-</div>
-<div id="outline-container-orgheadline40" class="outline-3">
-<h3 id="orgheadline40"><span class="section-number-3">1.8</span> ch10 The Internet of Things and DevOps</h3>
-<div class="outline-text-3" id="text-1-8">
+<h4 id="orgheadline37"><span class="section-number-4">1.7.4</span> The Gitlab issue tracker</h4>
+<div class="outline-text-4" id="text-1-7-4">
 <p>
-&#x2026;  Nodemcu Amica
+Trying the Gitlab CLI:
 </p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script"><span style="color: #ff694d;">GITLAB_API_PRIVATE_TOKEN</span>=&lt;token from your project&gt;
+<span style="color: #ff694d;">GITLAB_API_ENDPOINT</span>=http://gitlab.matangle.com:50003/api/v3
+  gitlab help Issues
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="section-number-4">1.7.5</span> Jira</h4>
+<div class="outline-text-4" id="text-1-7-5">
+<div class="org-src-container">
+
+<pre class="src src-shell-script">docker run -p 6053:8080 cptactionhank/atlassian-jira:latest
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">1.8</span> ch10 The Internet of Things and DevOps</h3>
+<div class="outline-text-3" id="text-1-8">
+</div><div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">1.8.1</span> NodeMCU</h4>
+<div class="outline-text-4" id="text-1-8-1">
+<p>
+To get a newer firmware(please change the version to the latest
+available first):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">wget https://github.com/nodemcu/nodemcu-firmware/releases/download/0.9.6-dev_20150704/nodemcu_integer_0.9.6-dev_20150704.bin
+</pre>
+</div>
+
+<p>
+Get esptool:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">git clone https://github.com/themadinventor/esptool.git
+</pre>
+</div>
+
+<p>
+Install pyserial:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">sudo dnf install pyserial
+</pre>
+</div>
+
+<p>
+Burn the firmware:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">sudo python ./esptool.py --port /dev/ttyUSB0 write_flash 0x00000 nodemcu_integer_0.9.6-dev_20150704.bin
+</pre>
+</div>
+
+<p>
+You might need additional arguments:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">sudo esptool.py --port=/dev/ttyUSB0 write_flash 0x0 nodemcu_integer_0.9.6-dev_20150704.bin  -fs 32m -fm dio -ff 40m
+</pre>
+</div>
+
+<p>
+Do some tests to see that the connection is working:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell-script">sudo ./esptool.py read_mac
+Connecting...
+MAC: 18:fe:34:00:d7:21
+
+sudo ./esptool.py flash_id
+Connecting...
+Manufacturer: e0
+Device: 4016
+</pre>
+</div>
+
+<p>
+Try the LED:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua">gpio.write(0, gpio.LOW)  <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">turn led on</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-lua">gpio.write(0, gpio.HIGH) <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">turn led off</span>
+</pre>
+</div>
+
+<p>
+Blink the LED in a loop:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua"><span style="color: #96a5d9; font-weight: bold;">while</span> 1 <span style="color: #96a5d9; font-weight: bold;">do</span>                     <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">loop forever</span>
+      gpio.write(0, gpio.HIGH) <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">turn led off</span>
+      tmr.delay(1000000)       <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">wait one second</span>
+      gpio.write(0, gpio.LOW)  <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">turn led on</span>
+      tmr.delay(1000000)       <span style="color: #2872b2;">-- </span><span style="color: #2872b2;">wait one second</span>
+<span style="color: #96a5d9; font-weight: bold;">end</span>
+</pre>
+</div>
+<p>
+To connect to a wireless network.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lua">wifi.setmode(wifi.STATION)
+wifi.sta.config(<span style="color: #68f6cb;">"SSID"</span>,<span style="color: #68f6cb;">"password"</span>)
+</pre>
+</div>
+
+<p>
+To see the IP we got:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua"><span style="color: #96a5d9; font-style: italic;">print</span>(wifi.sta.getip())
+</pre>
+</div>
+
+<p>
+Connecting to a web server:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua">conn=net.createConnection(net.TCP, <span style="color: #afc0fd; font-weight: bold;">false</span>) 
+conn:on(<span style="color: #68f6cb;">"receive"</span>, <span style="color: #96a5d9; font-weight: bold;">function</span>(conn, pl) <span style="color: #96a5d9; font-style: italic;">print</span>(pl) <span style="color: #96a5d9; font-weight: bold;">end</span>)
+conn:connect(80,<span style="color: #68f6cb;">"121.41.33.127"</span>)
+conn:send(<span style="color: #68f6cb;">"GET / HTTP/1.1\r\nHost: www.nodemcu.com\r\n"</span>
+    ..<span style="color: #68f6cb;">"Connection: keep-alive\r\nAccept: */*\r\n\r\n"</span>)
+</pre>
+</div>
+
+<p>
+Timer:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua">tmr.alarm(1, 1000, 1, <span style="color: #96a5d9; font-weight: bold;">function</span>() 
+    <span style="color: #96a5d9; font-style: italic;">print</span>(<span style="color: #68f6cb;">"hello world"</span>) 
+<span style="color: #96a5d9; font-weight: bold;">end</span> )
+</pre>
+</div>
+
+<p>
+Stop the timer:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lua">tmr.stop(1)
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Joakim Verona</p>
-<p class="date">Created: 2016-01-20 Wed 22:45</p>
+<p class="date">Created: 2016-02-07 Sun 21:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
