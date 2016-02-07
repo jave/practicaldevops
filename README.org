@@ -1,18 +1,32 @@
 * Code samples for the Practical Devops book
 These are the code samples for the book "Practical Devops" by Joakim
-Verona at Packt Publishing.
+Verona published by Packt Publishing.
 
 The books home page:
 https://www.packtpub.com/networking-and-servers/practical-devops
 
-The code repository at github:
-https://github.com/jave/practicaldevops.git
-** ch3 How Architecture affects DevOps
-*** COMMENT Shared authentication( with ldap)
-*** COMMENT large binary files
-*** COMMENT The Pull Request model
+In most cases you will need the book to make the most out of the exercises.
 
+Please ensure that you have the latest version of these exercises
+before continuing.
+
+To get the code samples from Github do:
+#+BEGIN_SRC shell
+git clone https://github.com/jave/practicaldevops.git
+#+END_SRC
+
+And to keep the samples updated, 
+#+BEGIN_SRC shell
+cd practicaldevops
+git pull https://github.com/jave/practicaldevops.git
+#+END_SRC
+
+** ch3 How Architecture affects DevOps
 *** Liquibase hello-world
+#+BEGIN_SRC shell-script
+cd ch3/liquibase-helloworld
+mvn liquibase:update
+#+END_SRC
 
 *** Manual installation
 #+BEGIN_SRC sh
@@ -23,7 +37,7 @@ lein build
 lein run
 #+END_SRC
 ** ch4 Everything is code
-*** Instructions for Docker
+*** Docker intermission
 These instructions are for Fedora, but they are similar for other
 distributions such as Ubuntu.
 
@@ -70,6 +84,14 @@ To verify that docker works:
 sudo docker run -i -t fedora /bin/bash
 #+END_SRC
 
+For some exercises you need to have docker-compose installed first.
+
+On Fedora 23 you can do:
+#+BEGIN_SRC sh
+dnf install docker-compose
+#+END_SRC
+
+In earlier versions you needed to download docker-compose manually.
 *** setting up a basic git server
 bare repo:
 #+BEGIN_SRC sh
@@ -92,17 +114,19 @@ package:
 sudo dnf install git-review
 #+END_SRC
 
-# TODO needs explanation
-git pull --rebase origin master
-git rebase -i origin/master
-
-*** COMMENT The Pull Request model
-*** Gitlab
-You need to have docker-compose installed first.
-On Fedora 23 you can now do:
+Rebase your commits on top of the commits in the remote repository:
 #+BEGIN_SRC sh
-dnf install docker-compose
+git pull --rebase origin master
 #+END_SRC
+
+Interactively edit the history, possibly squashing commits together to
+make a more readable history:
+#+BEGIN_SRC sh
+git rebase -i origin/master
+#+END_SRC
+
+
+*** Gitlab
 
 Now create a directory for gitlab, and fetch the compose file:
 #+BEGIN_SRC sh
@@ -157,10 +181,15 @@ fpm -s dir -t rpm -n hello-world -v 1 -C installdir usr
 rpm -qivp hello-world.rpm
 rpm -ivh hello-world.rpm
 #+END_SRC
-*** COMMENT Build slaves
-*** COMMENT A note on cross-compiling
-*** COMMENT Chaining jobs, build pipelines
-*** COMMENT Build in dependency order
+*** Build servers, Jenkins in particular
+
+#+BEGIN_SRC shell
+dnf install jenkins
+#+END_SRC
+
+#+BEGIN_SRC shell
+systemctl start jenkins
+#+END_SRC
 
 ** ch6 Test the code
 *** A Junit example
@@ -168,19 +197,21 @@ rpm -ivh hello-world.rpm
 cd ch6/hello-junit
 mvn install
 #+END_SRC
-*** Mocking
-*** Test Coverage
-*** Docker in automated testing
 *** Arquilian
+There is an arquillian hello-world in the Arquillian documentation.
 #+BEGIN_SRC java
 git clone https://github.com/aslakknutsen/arquillian-example-helloworld.git
 cd arquillian-example-helloworld
 mvn install
 #+END_SRC
-*** Performance testing
+
 *** Automated acceptance testing
 There are two implementations, one with annotations, and one with
 Lambda notation.
+
+While the lambda notation is easier to read than the annotation
+syntax, cucumbers lambda notation is fairly new and can be problematic
+to get to work depending on your Java implementation.
 
 To run the annotation based example: 
 #+BEGIN_SRC java
@@ -193,6 +224,8 @@ To run the lambda based example:
 cd ch6/hello-cucumber8
 mvn clean test
 #+END_SRC
+
+
 
 *** A complete test automation scenario
 **** hello-selenium-world
@@ -223,93 +256,462 @@ docker run -d -p 4444:4444 --name selenium-hub selenium/hub
 docker run -d --link selenium-hub:hub selenium/node-firefox
 #+END_SRC
 ** ch7 Deploying the code
-*** Virtualization stacks
-# TODO script to install vbox
 *** Executing code on the client
 #+BEGIN_SRC sh
 salt -E '.*' cmd.run 'ls -l'
 #+END_SRC
 
 *** Puppet master, Puppet agent
-# TODO https://hub.docker.com/r/rfkrocktk/puppet/ this is the agent
-
-# https://hub.docker.com/r/rfkrocktk/puppetmaster/ this is the master
 
 rfkrocktk/puppet is a convenient docker image for exploring puppet. 
+
+- https://hub.docker.com/r/rfkrocktk/puppet/ this is the agent
+- https://hub.docker.com/r/rfkrocktk/puppetmaster/ this is the master
 
 #+BEGIN_SRC sh
 docker --name dockerduck --hostname dockerduck -e PUPPETMASTER_TCP_HOST=ultramaster.example.com \
     -v /var/lib/docker/dockercontainer/puppet/ssl:/var/lib/puppet/ssl rfkrocktk/puppet
 #+END_SRC
-ssh ultramaster
-ultramaster:~ $ puppet cert list
-dockerduck (FD:E7:41:C9:2C:B7:5C:27:11:0C:8F:9C:1D:F6:F9:46)
 
 *** Ansible
+
 #+BEGIN_SRC Dockerfile
 FROM williamyeh/ansible:centos7
+#+END_SRC
+
+#+BEGIN_SRC sh
 docker run -v `pwd`/ansible:/ansible  -it <hash> bash
 cd /ansible
 ansible-playbook -i inventory playbook.yml    --connection=local --sudo
 #+END_SRC
-... etc
-*** Palletops
-cd pallet
-docker-compose up
 
-docker exec -it pallet  bash 
-lein repl
+A docker container which supports systemd:
+#+BEGIN_SRC dockerfile
+FROM fedora
+RUN yum -y update; yum clean all
+RUN yum install  ansible sudo
+RUN systemctl mask systemd-remount-fs.service dev-hugepages.mount \
+sys-fs-fuse-connections.mount \
+systemd-logind.service getty.target console-getty.service
+RUN cp /usr/lib/systemd/system/dbus.service /etc/systemd/system/;\
+sed -i 's/OOMScoreAdjust=-900//' /etc/systemd/system/dbus.service
+
+VOLUME ["/sys/fs/cgroup", "/run", "/tmp"]
+ENV container=docker
+
+CMD ["/usr/sbin/init"]
+#+END_SRC
+
+To run the new container:
+#+BEGIN_SRC shell-script
+docker run -it --rm -v /sys/fs/cgroup:/sys/fs/cgroup:ro  -v `pwd`/ansible:/ansible <hash>
+#+END_SRC
+
+Connect to the container:
+#+BEGIN_SRC shell-script
+docker exec -it <hash> bash
+#+END_SRC
+
+A slightly more advanced exercise:
+#+BEGIN_SRC yaml
+---
+- hosts: localhost
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running (and enable it at boot)
+    service: name=httpd state=started enabled=yes
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
+#+END_SRC
+
+
 *** Deploying with Chef
-docker run -it ubuntu
-curl -L https://www.opsco
-de.com/chef/install.sh | bash
-... etc
+Start a clean container for the exercise:
+#+BEGIN_SRC sh
+docker run -it ubuntu bash
+#+END_SRC
+
+Install Chef in the container:
+#+BEGIN_SRC sh
+curl -L https://www.opscode.com/chef/install.sh | bash
+#+END_SRC
+
+Verify the chef-solo was installed:
+#+BEGIN_SRC shell-script
+chef-solo -v
+#+END_SRC
+
+Fetch and unpack a pre-rolled chef configuration:
+#+BEGIN_SRC shell-script
+curl -L  http://github.com/opscode/chef-repo/tarball/master -o master.tgz
+tar -zxf master.tgz
+mv chef-repo* chef-repo
+rm master.tgz
+#+END_SRC
+
+Create a configuration file for chef:
+#+BEGIN_SRC shell-script
+mkdir .chef
+echo "cookbook_path [ '/root/chef-repo/cookbooks' ]" > .chef/knife.rb
+#+END_SRC
+
+Now create a template:
+#+BEGIN_SRC shell-script
+knife cookbook create phpapp
+#+END_SRC
+
 *** Deploying with Saltstack
+Start a Saltstack container:
 #+BEGIN_SRC sh
 docker run -i -t --name=saltdocker_master_1 -h master -p 4505 -p 4506 \
    -p 8080 -p 8081 -e SALT_NAME=master -e SALT_USE=master \
    -v `pwd`/srv/salt:/srv/salt:rw jacksoncage/salt
 #+END_SRC
-... etc
+
+Start a shell inside the Saltstack container:
+#+BEGIN_SRC shell-script
+docker exec -i -t saltdocker_master_1 bash
+#+END_SRC
+
+Salt state to install httpd:
+#+BEGIN_SRC yaml
+top.sls:
+base:
+  '*':
+    - webserver
+
+webserver.sls:
+apache2:               # ID declaration
+  pkg:                # state declaration
+    - installed       # function declaration
+#+END_SRC
+
+Run this command to ensure the desired state:
+#+BEGIN_SRC shell-script
+salt-call --local state.highstate -l debug
+#+END_SRC
+
+
 *** Vagrant
 #+BEGIN_SRC sh
 yum install 'vagrant*'
 #+END_SRC
 
-... etc
-*** Deploying with Docker
-# TODO ??? unfinished?
-*** AWS
-*** Azure
+To use Vagrants Virtualbox driver, you need to set up Virtualbox
+according to your distribution.
+
+Create a virtual machine with Vagrant from a recipy:
+#+BEGIN_SRC shell-script
+vagrant init hashicorp/precise32
+#+END_SRC
+
+Try starting the machine:
+#+BEGIN_SRC shell-script
+vagrant up
+#+END_SRC
+
+You can now ssh to the machine:
+#+BEGIN_SRC shell-script
+vagrant ssh
+#+END_SRC
+
+Add this to the Vagrant file:
+#+BEGIN_SRC shell-script
+Vagrant.configure("2") do |config|
+  config.vm.box = "hashicorp/precise32"
+  config.vm.provision :shell, path: "bootstrap.sh"
+end
+#+END_SRC
+
+And create a bootstrap.sh file that will install Apache httpd:
+#+BEGIN_SRC shell-script
+#!/usr/bin/env bash
+apt-get update
+apt-get install -y apache2
+#+END_SRC
 ** ch8 Monitoring the code
 *** Nagios 
+Start a Nagios container:
 #+BEGIN_SRC sh
 docker run -e     NAGIOSADMIN_USER=nagiosadmin -e NAGIOSAMDIN_PASS=nagios  -p 80:30000 cpuguy83/nagios 
 #+END_SRC
 
-... etc
+Start a second container to monitor:
+#+BEGIN_SRC sh
+ docker run -p 30001:80 nginx
+#+END_SRC
+
+A docker compose file for the scenario:
+#+BEGIN_SRC yml
+nagios:
+  image: mt-nagios 
+  build:
+    - mt-nagios
+  ports:
+   -  80:30000 
+  environment:
+    - NAGIOSADMIN_USER=nagiosadmin
+    - NAGIOSAMDIN_PASS=nagios
+  volumes:
+   ./nagios:/etc/nagios   
+nginx:
+  image: nginx
+#+END_SRC
+
+Configuration files for the Nagios example:
+#+BEGIN_SRC sh
+define host {
+    name        regular-host
+    use         linux-server
+    register       0
+    max_check_attempts   5
+}
+
+define host{
+    use             regular-host
+    host_name       client1
+    address         192.168.200.15
+    contact_groups  admins
+    notes           test client1
+}
+#+END_SRC
+hostgroups.cfg
+
+#+BEGIN_SRC sh
+define hostgroup {
+    hostgroup_name  test-group
+    alias           Test Servers
+    members         client1
+}
+
+services.cfg
+#+BEGIN_SRC sh
+define service {
+    use                     generic-service
+    hostgroup_name          test-group
+    service_description     PING
+    check_command           check_ping!200.0,20%!600.0,60%
+}
+#+END_SRC
+
+An example mail configuration:
+#+BEGIN_SRC sh
+define contact{
+    contact_name                    matangle-admin
+    use                             generic-contact
+    alias                           Nagios Admin
+    email                           pd-admin@matangle.com
+}
+
+define contactgroup{
+    contactgroup_name       admins
+    alias                   Nagios Administrators
+    members                 matange-admin
+}
+#+END_SRC
+
 *** Munin
 #+BEGIN_SRC sh
 docker run -p 30005:80 lrivallain/munin:latest
 #+END_SRC
 
-... etc
+Running commands in the munin container:
+#+BEGIN_SRC sh
+docker exec -it <hash> bash
+su - munin --shell=/bin/bash
+/usr/share/munin/munin-update 
+#+END_SRC
+
+If you are having trouble running munin-update, try:
+#+BEGIN_SRC sh
+chown munin.munin /var/log/munin/munin-update.log
+#+END_SRC
+
+It may still take some time for the graphs to display.
+
+This is the code for the munin plugin:
+#+BEGIN_SRC sh
+graph_title Load average
+graph_vlabel load
+load.label load
+#+END_SRC
+
+To emit data you simply print it to stdout.
+
+
+#+BEGIN_SRC sh
+printf "load.value "
+cut -d' ' -f2  /proc/loadavg
+#+END_SRC
+
+Here is an example script.
+
+
+#+BEGIN_SRC sh
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Load average
+graph_vlabel load
+load.label load
+EOM
+        exit 0;;
+esac
+
+printf "load.value "
+cut -d' ' -f2  /proc/loadavg
+#+END_SRC
+
 *** Ganglia
+To get help with the container:
 #+BEGIN_SRC sh
 docker run wookietreiber/ganglia --help
 #+END_SRC
 
-... etc
-# TODO the docker compose example is broken!
-*** Graphite
+To run the Ganglia container:
 #+BEGIN_SRC sh
- docker run -it \
-  -p 30020:80 \
-  -p 2003:2003 \
-  sitespeedio/graphite
+ docker run -p 30010:80 wookietreiber/ganglia
 #+END_SRC
-...etc
+
+
+*** Graphite
+Start Graphite:
+#+BEGIN_SRC sh
+ docker run -it   -p 30020:80   -p 2003:2003   sitespeedio/graphite
+#+END_SRC
+
+Try the following url: http://localhost:30020/
 *** Log handling
+Start Kibana and Elasticsearch:
+#+BEGIN_SRC sh
+docker run -d elasticsearch &&
+docker run --link some-elasticsearch:elasticsearch -d kibana
+#+END_SRC
+
 ** ch9 Issue Tracking
+*** Bugzilla
+#+BEGIN_SRC shell-script
+docker run -p 6050:80 dklawren/docker-bugzilla 
+#+END_SRC
+*** Trac
+#+BEGIN_SRC shell-script
+docker run -d -p 6051:8080 barogi/trac:1.0.2
+#+END_SRC
+*** Redmine
+#+BEGIN_SRC shell-script
+docker run -d -p  6052:3000 redmine
+#+END_SRC
+*** The Gitlab issue tracker
+Trying the Gitlab CLI:
+#+BEGIN_SRC shell-script
+GITLAB_API_PRIVATE_TOKEN=<token from your project>
+GITLAB_API_ENDPOINT=http://gitlab.matangle.com:50003/api/v3
+  gitlab help Issues
+#+END_SRC
+*** Jira
+#+BEGIN_SRC shell-script
+docker run -p 6053:8080 cptactionhank/atlassian-jira:latest
+#+END_SRC
+
 ** ch10 The Internet of Things and DevOps
-...  Nodemcu Amica
+*** NodeMCU
+To get a newer firmware(please change the version to the latest
+available first):
+#+BEGIN_SRC shell-script
+wget https://github.com/nodemcu/nodemcu-firmware/releases/download/0.9.6-dev_20150704/nodemcu_integer_0.9.6-dev_20150704.bin
+#+END_SRC
+
+Get esptool:
+#+BEGIN_SRC shell-script
+git clone https://github.com/themadinventor/esptool.git
+#+END_SRC
+
+Install pyserial:
+#+BEGIN_SRC shell-script
+sudo dnf install pyserial
+#+END_SRC
+
+Burn the firmware:
+#+BEGIN_SRC shell-script
+sudo python ./esptool.py --port /dev/ttyUSB0 write_flash 0x00000 nodemcu_integer_0.9.6-dev_20150704.bin
+#+END_SRC
+
+You might need additional arguments:
+#+BEGIN_SRC shell-script
+sudo esptool.py --port=/dev/ttyUSB0 write_flash 0x0 nodemcu_integer_0.9.6-dev_20150704.bin  -fs 32m -fm dio -ff 40m
+#+END_SRC
+
+Do some tests to see that the connection is working:
+#+BEGIN_SRC shell-script
+sudo ./esptool.py read_mac
+Connecting...
+MAC: 18:fe:34:00:d7:21
+
+sudo ./esptool.py flash_id
+Connecting...
+Manufacturer: e0
+Device: 4016
+#+END_SRC
+
+Try the LED:
+#+BEGIN_SRC lua
+      gpio.write(0, gpio.LOW)  -- turn led on
+#+END_SRC
+
+#+BEGIN_SRC lua
+      gpio.write(0, gpio.HIGH) -- turn led off
+#+END_SRC
+
+Blink the LED in a loop:
+#+BEGIN_SRC lua
+while 1 do                     -- loop forever
+      gpio.write(0, gpio.HIGH) -- turn led off
+      tmr.delay(1000000)       -- wait one second
+      gpio.write(0, gpio.LOW)  -- turn led on
+      tmr.delay(1000000)       -- wait one second
+end
+#+END_SRC
+To connect to a wireless network.
+
+#+BEGIN_SRC lua
+wifi.setmode(wifi.STATION)
+wifi.sta.config("SSID","password")
+#+END_SRC
+
+To see the IP we got:
+#+BEGIN_SRC lua
+print(wifi.sta.getip())
+#+END_SRC
+
+Connecting to a web server:
+#+BEGIN_SRC lua
+conn=net.createConnection(net.TCP, false) 
+conn:on("receive", function(conn, pl) print(pl) end)
+conn:connect(80,"121.41.33.127")
+conn:send("GET / HTTP/1.1\r\nHost: www.nodemcu.com\r\n"
+    .."Connection: keep-alive\r\nAccept: */*\r\n\r\n")
+#+END_SRC
+
+Timer:
+#+BEGIN_SRC lua
+    tmr.alarm(1, 1000, 1, function() 
+        print("hello world") 
+    end )
+#+END_SRC
+
+Stop the timer:
+#+BEGIN_SRC lua
+    tmr.stop(1)
+#+END_SRC
