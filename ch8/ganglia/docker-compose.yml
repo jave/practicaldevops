@@ -1,0 +1,8 @@
+gmetad:
+  image: wookietreiber/ganglia
+  ports:
+    - "30010:80"
+gmond:    
+  image: wookietreiber/ganglia
+gmond2:    
+  image: wookietreiber/ganglia
